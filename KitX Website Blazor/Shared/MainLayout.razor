@@ -10,25 +10,13 @@
 
     <main>
         <div class="top-row px-4" style="z-index: 999;">
-            <a href="https://docs.catrol.cn/apps/kitx/" target="_blank"
-               style="text-decoration: none;">
-                <i class="fa-solid fa-book"></i>&nbsp;@Text["Nav_Docs"]&nbsp;
-            </a>
-            <a href="https://space.bilibili.com/194150723" target="_blank"
-               style="text-decoration: none;">
-                <i class="fa-brands fa-bilibili"></i>&nbsp;@Text["Nav_BiliBili"]&nbsp;
-            </a>
-            <a href="https://github.com/Crequency/KitX" target="_blank"
-               style="text-decoration: none;">
-                <i class="fa-brands fa-github"></i>&nbsp;@Text["Nav_GitHub"]&nbsp;
-            </a>
-        </div>
+            <LinkButton Link="https://docs.catrol.cn/apps/kitx/" IconKind="fa-solid fa-book"
+                Content=@AppendSpace(Text["Nav_Docs"]) />
+            <LinkButton Link="https://space.bilibili.com/194150723" IconKind="fa-brands fa-bilibili"
+                Content=@AppendSpace(Text["Nav_BiliBili"]) />
+            <LinkButton Link="https://github.com/Crequency/KitX" IconKind="fa-brands fa-github"
+                Content=@AppendSpace(Text["Nav_GitHub"]) />
 
-        <article class="content px-4">
-            @Body
-        </article>
-
-        <div class="footer">
             <div class="form-row align-items-center text-muted px-4" style="z-index: 999;">
                 <div style="float:right;display:flex;flex-direction:row;">
                     <span class="oi oi-globe" aria-hidden="true"
@@ -42,6 +30,13 @@
                 </div>
             </div>
         </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+
+        <div class="footer">
+        </div>
     </main>
 </div>
 
@@ -50,9 +45,10 @@
 
     private I18nText.Text Text = new I18nText.Text();
 
-    protected override async Task OnInitializedAsync()
+    protected override async void OnInitialized()
     {
         var lang = await I18nText.GetCurrentLanguageAsync();
+        Console.WriteLine($"Language Detect: {lang}");
         if (new[] { "en", "cn" }.Contains(lang.Split('-')[0]))
         {
             CurrentLang = lang;
@@ -74,6 +70,11 @@
         Console.WriteLine($"OnChange: {args.Value}");
         CurrentLang = args.Value as string;
         await I18nText.SetCurrentLanguageAsync(CurrentLang);
+    }
+
+    private string AppendSpace(string str)
+    {
+        return $" {str} ";
     }
 }
 

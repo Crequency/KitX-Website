@@ -16,4 +16,8 @@
         <PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\js\" />
+    </ItemGroup>
+
 </Project>

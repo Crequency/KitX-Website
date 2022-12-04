@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Content Remove="Languages\en-US.json" />
+	  <Content Remove="Languages\zh-CN.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <AdditionalFiles Include="Languages\zh-CN.json" />
+	  <AdditionalFiles Include="Languages\en-US.json" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Masa.Blazor" Version="0.6.0" />
+	</ItemGroup>
+</Project>
