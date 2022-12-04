@@ -1,4 +1,4 @@
-﻿namespace KitX_Website.Data
+﻿namespace KitX_Website_Blazor.Data
 {
     public class WeatherForecastService
     {

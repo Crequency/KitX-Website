@@ -1,4 +1,4 @@
-using KitX_Website.Data;
+ï»¿using KitX_Website_Blazor.Data;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace KitX_Website
@@ -12,7 +12,7 @@ namespace KitX_Website
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddI18nText();     //  ¶àÓïÑÔ¿ò¼Ü
+            builder.Services.AddI18nText();     //  å¤šè¯­è¨€æ¡†æž¶
             //builder.Services.AddLocalization();
             builder.Services.AddSingleton<WeatherForecastService>();
 

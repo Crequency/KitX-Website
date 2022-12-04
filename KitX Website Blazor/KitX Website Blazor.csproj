@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>KitX_Website</RootNamespace>
+        <RootNamespace>KitX_Website_Blazor</RootNamespace>
         <UserSecretsId>392aa4c0-1b97-4c7d-8a3d-6a27f16239f9</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..</DockerfileContext>

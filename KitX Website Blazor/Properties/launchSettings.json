@@ -1,6 +1,6 @@
-{
+﻿{
   "profiles": {
-    "KitX Website": {
+    "KitX Website Blazor": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
