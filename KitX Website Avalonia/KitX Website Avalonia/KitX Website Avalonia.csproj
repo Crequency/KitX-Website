@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <None Remove="Assets\KitX-Icon-256x-margin-2x.png" />
     <TrimmerRootDescriptor Include="Roots.xml" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview4" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview4" />
+    <PackageReference Include="Material.Avalonia" Version="2.5.1" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
 </Project>

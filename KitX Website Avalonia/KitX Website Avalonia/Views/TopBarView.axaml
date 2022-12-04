@@ -7,13 +7,16 @@
              d:DesignWidth="800"
              mc:Ignorable="d">
     <Panel>
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Left">
-                <Border Width="40"
-                        Height="40"
-                        Margin="10"
-                        Background="White"/>
-                <Button Content="Home"/>
+        <Border Background="{DynamicResource AppThemeColor}"/>
+        <DockPanel VerticalAlignment="Top">
+            <StackPanel Height="68"
+                        DockPanel.Dock="Left"
+                        Orientation="Horizontal">
+                <Image Width="48"
+                       Height="48"
+                       Margin="10"
+                       Source="/Assets/KitX-Icon-256x-margin-2x.png"/>
+
             </StackPanel>
             <Border/>
         </DockPanel>

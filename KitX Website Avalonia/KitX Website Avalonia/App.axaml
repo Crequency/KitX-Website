@@ -1,12 +1,19 @@
-<Application xmlns="https://github.com/avaloniaui"
+﻿<Application x:Class="KitX_Website_Avalonia.App"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:KitX_Website_Avalonia"
-             x:Class="KitX_Website_Avalonia.App">
+             xmlns:local="using:KitX_Website_Avalonia">
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
+        <!--<themes:MaterialTheme BaseTheme="Dark"
+                              PrimaryColor="Purple"
+                              SecondaryColor="Lime"/>-->
     </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="AppThemeColor" Color="#FF3873D9"/>
+    </Application.Resources>
 </Application>
