@@ -8,7 +8,8 @@
     <NotFound>
         <PageTitle>@Text["Site_NotFound_Title"]</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">@Text["Site_NotFound_Tip"]</p>
+            <_404 />
+            @*<p role="alert">@Text["Site_NotFound_Tip"]</p>*@
         </LayoutView>
     </NotFound>
 </Router>
