@@ -17,9 +17,10 @@
     <DockPanel>
         <views:TopBarView DockPanel.Dock="Top"/>
         <Panel>
-            <TextBlock HorizontalAlignment="Center"
+            <!--<TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="{Binding Greeting}"/>
+                       Text="{Binding Greeting}"/>-->
+            <views:HomeView/>
         </Panel>
     </DockPanel>
 </UserControl>

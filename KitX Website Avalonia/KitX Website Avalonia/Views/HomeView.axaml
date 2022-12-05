@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="KitX_Website_Avalonia.Views.HomeView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Styles>
+        <Style Selector="Panel.Content">
+            <Style.Animations>
+                <Animation Easing="CubicEaseIn"
+                           FillMode="Forward"
+                           Duration="0:0:0.45">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Margin" Value="180,20,180,0"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </UserControl.Styles>
+    <Panel Background="{DynamicResource AppThemeColor}">
+        <Panel Height="200" VerticalAlignment="Bottom">
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Footer"/>
+        </Panel>
+        <ScrollViewer>
+            <DockPanel>
+                <Panel Height="200"
+                       Background="Transparent"
+                       DockPanel.Dock="Bottom"/>
+                <Panel Height="1800"
+                       Margin="0,20,0,0"
+                       Background="#FF1B2A4E"
+                       Classes="Content"/>
+            </DockPanel>
+        </ScrollViewer>
+    </Panel>
+</UserControl>
