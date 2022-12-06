@@ -35,7 +35,7 @@
                                         DockPanel.Dock="Right"/>
                                 <DockPanel>
                                     <TextBlock DockPanel.Dock="Bottom"
-                                               FontFamily="Microsoft YaHei"
+                                               FontFamily="微软雅黑"
                                                FontSize="26"
                                                Text="自由组合插件, 打造你的工作流, 连接你的不同设备"
                                                TextWrapping="Wrap"/>
