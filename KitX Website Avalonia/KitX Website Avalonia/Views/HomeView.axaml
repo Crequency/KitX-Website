@@ -3,41 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="ThisView"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
     <UserControl.Styles>
-        <Style Selector="Panel.Content">
-            <Style.Animations>
-                <Animation Easing="CubicEaseIn"
-                           FillMode="Forward"
-                           Duration="0:0:0.45">
-                    <KeyFrame Cue="0%">
-                        <Setter Property="Margin" Value="0,20,0,0"/>
-                    </KeyFrame>
-                    <KeyFrame Cue="100%">
-                        <Setter Property="Margin" Value="180,20,180,0"/>
-                    </KeyFrame>
-                </Animation>
-            </Style.Animations>
+        <Style Selector="TextBox.Debug">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Margin" Value="0,5"/>
         </Style>
     </UserControl.Styles>
-    <Panel Background="{DynamicResource AppThemeColor}">
-        <Panel Height="200" VerticalAlignment="Bottom">
-            <Button HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Content="Footer"/>
-        </Panel>
-        <ScrollViewer>
-            <DockPanel>
-                <Panel Height="200"
-                       Background="Transparent"
-                       DockPanel.Dock="Bottom"/>
-                <Panel Height="1800"
-                       Margin="0,20,0,0"
-                       Background="#FF1B2A4E"
-                       Classes="Content"/>
-            </DockPanel>
+    <Panel>
+        <ScrollViewer x:Name="ContentScrollViewer">
+
+            <StackPanel>
+
+                <!--  Content Area  -->
+                <Border x:Name="ContentBorder">
+                    <Panel x:Name="ContentPanel"
+                           Height="1800"
+                           VerticalAlignment="Bottom">
+                        <Border x:Name="ContentBackground"
+                                Background="{DynamicResource AppThemeColor}"
+                                BoxShadow="0 0 15 3 Black"
+                                Opacity="0.7"/>
+                        <StackPanel HorizontalAlignment="Center">
+                            <DockPanel Margin="0,50">
+                                <Border Width="200"
+                                        Background="White"
+                                        CornerRadius="7.5"
+                                        DockPanel.Dock="Right"/>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Bottom"
+                                               FontFamily="Microsoft YaHei"
+                                               FontSize="26"
+                                               Text="自由组合插件, 打造你的工作流, 连接你的不同设备"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock FontFamily="Microsoft YaHei"
+                                               FontSize="26"
+                                               Text="多设备互联的功能扩展平台"/>
+                                </DockPanel>
+                            </DockPanel>
+                        </StackPanel>
+                        <Button HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="Body"/>
+                    </Panel>
+                </Border>
+                <!--  End Content Area  -->
+
+                <!--  Footer Area  -->
+                <Panel Height="200" Margin="180,0">
+                    <Button HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Footer"/>
+                </Panel>
+                <!--  End Footer Area  -->
+
+            </StackPanel>
         </ScrollViewer>
+
+        <!--  Debug UI  -->
+        <StackPanel Margin="40"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsVisible="{Binding IsDebug}">
+            <TextBlock Margin="0,5" Text="Debug Panel"/>
+            <TextBox x:Name="Offset" Classes="Debug"/>
+            <TextBox x:Name="CalculateOffset" Classes="Debug"/>
+            <TextBox x:Name="PassedPixels" Classes="Debug"/>
+        </StackPanel>
+        <!--  End Debug UI  -->
+
     </Panel>
 </UserControl>

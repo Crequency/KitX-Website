@@ -8,5 +8,7 @@ namespace KitX_Website_Avalonia.ViewModels
 {
     internal class HomeViewModel
     {
+
+        internal bool IsDebug => true;
     }
 }
