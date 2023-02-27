@@ -1,11 +1,11 @@
 {
-    "name": "kitx_website",
-    "short_name": "kitx_website",
+    "name": "KitX Website",
+    "short_name": "KitX Website",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Website for KitX Project",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
