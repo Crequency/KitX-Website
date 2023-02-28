@@ -1,4 +1,6 @@
-﻿import 'package:community_material_icon/community_material_icon.dart';
+﻿import 'dart:html';
+
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,8 +18,21 @@ class _HomePageState extends State<HomePage> {
   var tileRadius = ContinuousRectangleBorder(borderRadius: BorderRadius.circular(10.0));
   var tilesPadding = 15.0;
 
+  void checkWindowWidth() {
+    var width = window.innerWidth;
+    if (width != null) {
+      if (width <= 500 && showTextOfLinkButton.value)
+        showTextOfLinkButton.value = false;
+      else if (width > 500 && !showTextOfLinkButton.value) showTextOfLinkButton.value = true;
+    }
+  }
+
   @override
   void initState() {
+    window.onResize.listen((event) => checkWindowWidth());
+
+    checkWindowWidth();
+
     super.initState();
   }
 
@@ -101,9 +116,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 30),
                   Divider(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 30),
                   ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
