@@ -31,20 +31,32 @@
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>KitX Website</title>
+
   <link rel="manifest" href="manifest.json">
 
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/loaders.min.css">
+
+  <script src="scripts/script.js"></script>
 
   <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
+
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 
-<body style="background-color: black;">
-  <div data-loader="circle-side" style="margin: auto;left: 0;top: 0;right: 0;bottom: 0;position: absolute;"></div>
+<body style="background-color: #3d0c81;" onclick="changeLoadingAnimation()">
+
+  <div id="loading_animator" data-loader="circle-side"></div>
+
+  <div id="loading_tip">
+    <h1 style="color: white;">
+      Loading
+    </h1>
+  </div>
 
   <script>
     window.addEventListener('load', function (ev) {
@@ -54,6 +66,8 @@
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: function (engineInitializer) {
+          stopLoadingAnimation();
+
           engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
