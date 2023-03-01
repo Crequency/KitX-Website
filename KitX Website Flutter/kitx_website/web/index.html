@@ -19,19 +19,21 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Website for KitX Project.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="kitx_website">
+  <meta name="apple-mobile-web-app-title" content="KitX Website">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>kitx_website</title>
+  <title>KitX Website</title>
   <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="styles/loaders.min.css">
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -41,7 +43,9 @@
   <script src="flutter.js" defer></script>
 </head>
 
-<body>
+<body style="background-color: black;">
+  <div data-loader="circle-side" style="margin: auto;left: 0;top: 0;right: 0;bottom: 0;position: absolute;"></div>
+
   <script>
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
