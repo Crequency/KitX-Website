@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("KitX Website", overflow: TextOverflow.fade),
+        title: const Text('KitX Website', overflow: TextOverflow.fade),
         actions: getActions(context),
       ),
       drawer: AppDrawer(),
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         width: 192,
                         height: 192,
                         alignment: Alignment.center,
-                        image: AssetImage("assets/KitX-Icon-192x-margin-2x.png"),
+                        image: AssetImage('assets/KitX-Icon-192x-margin-2x.png'),
                         fit: BoxFit.fitWidth,
                       ),
                     ),
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: [
                         const Text(
-                          "KitX",
+                          'KitX',
                           style: TextStyle(
                             fontSize: 50,
                           ),

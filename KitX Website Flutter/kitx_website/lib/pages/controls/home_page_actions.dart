@@ -11,8 +11,8 @@ var showTextOfLinkButton = true.obs;
 var actionsPadding = 5.0;
 var actionsMargin = 10.0;
 
-var kitx_docs_key = "Docs_KitX";
-var kitx_github_repo_key = "GitHubRepo_KitX";
+var kitx_docs_key = 'Docs_KitX';
+var kitx_github_repo_key = 'GitHubRepo_KitX';
 
 List<Widget> getActions(BuildContext context) => [
       Obx(
@@ -24,7 +24,7 @@ List<Widget> getActions(BuildContext context) => [
                     const Icon(CommunityMaterialIcons.file_document),
                     const SizedBox(width: 10),
                     const Text(
-                      "Docs",
+                      'Docs',
                       style: TextStyle(fontSize: 16),
                     ),
                   ],
@@ -48,7 +48,7 @@ List<Widget> getActions(BuildContext context) => [
                     const Icon(CommunityMaterialIcons.github),
                     const SizedBox(width: 10),
                     const Text(
-                      "GitHub",
+                      'GitHub',
                       style: TextStyle(fontSize: 16),
                     ),
                   ],
@@ -79,10 +79,10 @@ List<Widget> getActions(BuildContext context) => [
         icon: const Icon(Icons.language),
         itemBuilder: (context) => [
           PopupMenuItem(
-            child: const Text("简体中文"),
+            child: const Text('简体中文'),
           ),
           PopupMenuItem(
-            child: const Text("English (US)"),
+            child: const Text('English (US)'),
           ),
         ],
       ),

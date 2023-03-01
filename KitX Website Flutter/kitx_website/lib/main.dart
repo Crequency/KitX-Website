@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: Global.themeNotifier,
       builder: (context, mode, _) => GetMaterialApp(
-        title: "KitX Website",
+        title: 'KitX Website',
         themeMode: mode,
         theme: lightThemeData,
         darkTheme: darkThemeData,

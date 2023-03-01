@@ -8,15 +8,15 @@ class _Global {
   var themeNotifier = ValueNotifier(ThemeMode.system);
   var themeMode = ThemeMode.system;
 
-  final version = "".obs;
-  final versionString = "".obs;
+  final version = ''.obs;
+  final versionString = ''.obs;
 
   var packageInfo = PackageInfo.fromPlatform();
 
   Future<void> init() async {
     await packageInfo.then((value) => version.value = value.version);
 
-    versionString.value = "v${version.value}";
+    versionString.value = 'v${version.value}';
   }
 
   void delay(Function func, int milliseconds) {
