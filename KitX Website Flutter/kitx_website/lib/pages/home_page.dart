@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import 'package:kitx_website/pages/controls/drawer.dart';
 import 'package:kitx_website/pages/controls/home_page_actions.dart';
+import 'package:kitx_website/utils/global.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,19 +38,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void showItemsDialog(BuildContext context, List<Widget> items) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: Container(
-          width: MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * 0.9 : 600,
-          margin: EdgeInsets.all(30),
-          child: ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: items,
+    Global.delay(
+      () => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: Container(
+            width: MediaQuery.of(context).size.width < 600 ? MediaQuery.of(context).size.width * 0.9 : 600,
+            margin: EdgeInsets.all(30),
+            child: ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              children: items,
+            ),
           ),
         ),
       ),
+      100,
     );
   }
 
