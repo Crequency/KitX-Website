@@ -2,6 +2,7 @@
 
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:kitx_website/pages/controls/drawer.dart';
@@ -97,8 +98,10 @@ class _HomePageState extends State<HomePage> {
                       splashColor: context.iconColor?.withOpacity(0.3),
                       onTap: () {},
                       child: const Image(
+                        width: 192,
+                        height: 192,
                         alignment: Alignment.center,
-                        image: AssetImage("assets/KitX-Icon-1920x-margin-2x.png"),
+                        image: AssetImage("assets/KitX-Icon-192x-margin-2x.png"),
                         fit: BoxFit.fitWidth,
                       ),
                     ),
