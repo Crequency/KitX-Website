@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("KitX Website"),
+        title: const Text("KitX Website", overflow: TextOverflow.fade),
         actions: getActions(context),
       ),
       drawer: AppDrawer(),
