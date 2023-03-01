@@ -1,21 +1,24 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:get/get.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 
 import 'package:kitx_website/utils/global.dart';
+import 'package:kitx_website/utils/open_link.dart';
 
 var themeButtonInLightMode = true.obs;
 var showTextOfLinkButton = true.obs;
 
-var actionsPadding = 10.0;
+var actionsPadding = 5.0;
+var actionsMargin = 10.0;
+
+var kitx_docs_key = "Docs_KitX";
+var kitx_github_repo_key = "GitHubRepo_KitX";
 
 List<Widget> getActions(BuildContext context) => [
-      SizedBox(width: actionsPadding),
       Obx(
         () => showTextOfLinkButton.value
             ? ElevatedButton(
-                onPressed: () => launchUrlString("https://docs.catrol.cn/apps/kitx/"),
+                onPressed: () => openLink(kitx_docs_key),
                 child: Row(
                   children: [
                     const Icon(CommunityMaterialIcons.file_document),
@@ -28,7 +31,7 @@ List<Widget> getActions(BuildContext context) => [
                 ),
               )
             : IconButton(
-                onPressed: () => launchUrlString("https://docs.catrol.cn/apps/kitx/"),
+                onPressed: () => openLink(kitx_docs_key),
                 icon: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
                   child: Icon(CommunityMaterialIcons.file_document),
@@ -39,7 +42,7 @@ List<Widget> getActions(BuildContext context) => [
       Obx(
         () => showTextOfLinkButton.value
             ? ElevatedButton(
-                onPressed: () => launchUrlString("https://github.com/Crequency/KitX"),
+                onPressed: () => openLink(kitx_github_repo_key),
                 child: Row(
                   children: [
                     const Icon(CommunityMaterialIcons.github),
@@ -52,7 +55,7 @@ List<Widget> getActions(BuildContext context) => [
                 ),
               )
             : IconButton(
-                onPressed: () => launchUrlString("https://github.com/Crequency/KitX"),
+                onPressed: () => openLink(kitx_github_repo_key),
                 icon: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
                   child: Icon(CommunityMaterialIcons.github),
@@ -83,5 +86,5 @@ List<Widget> getActions(BuildContext context) => [
           ),
         ],
       ),
-      SizedBox(width: actionsPadding),
+      SizedBox(width: actionsMargin),
     ];
