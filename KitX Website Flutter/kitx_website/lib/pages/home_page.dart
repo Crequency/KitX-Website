@@ -73,10 +73,17 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('KitX Website', overflow: TextOverflow.fade),
+        title: Obx(
+          () => Text(
+            showTextOfLinkButton.value ? 'KitX Website' : 'KitX',
+            overflow: showTextOfLinkButton.value ? TextOverflow.fade : TextOverflow.ellipsis,
+          ),
+        ),
         actions: getActions(context),
       ),
       drawer: AppDrawer(),
+      drawerEnableOpenDragGesture: true,
+      drawerEdgeDragWidth: (window.innerWidth ?? 300) / 2 + 50,
       body: Center(
         child: Container(
           width: 500,
