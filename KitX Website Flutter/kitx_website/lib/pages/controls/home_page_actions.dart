@@ -76,7 +76,7 @@ List<Widget> getActions(BuildContext context) => [
       PopupMenuButton(
         tooltip: '',
         padding: EdgeInsets.all(0),
-        icon: const Icon(Icons.language),
+        icon: const Icon(Icons.translate),
         itemBuilder: (context) => [
           PopupMenuItem(
             child: const Text('简体中文'),
