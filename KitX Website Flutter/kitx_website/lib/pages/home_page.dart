@@ -58,14 +58,51 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void downloadFile(String url) {
+    AnchorElement(href: url)
+      ..download = url
+      ..click();
+  }
+
   void beginDownload(BuildContext context, String id) {
     Get.back();
-    showItemsDialog(
-      context,
-      [
-        const Text('当前尚未发布, 官网下载项暂不可用, 您可前往 GitHub 仓库 Release 页面下载测试版'),
-      ],
-    );
+
+    var latestVersion = 'v3.22.04.6287';
+
+    var baseUrl = 'https://source.catrol.cn/download/apps/kitx';
+
+    if (id.contains('.pubxml')) id = id.replaceAll('.pubxml', '');
+
+    var url = '$baseUrl/desktop/$latestVersion/kitx-$id.7z';
+
+    var canDownload = false;
+
+    if (id.startsWith('win')) {
+      url = url.replaceAll('desktop', 'win');
+      canDownload = true;
+    }
+
+    if (id.startsWith('osx')) {
+      url = url.replaceAll('desktop', 'osx');
+      canDownload = true;
+    }
+
+    if (id.startsWith('linux')) {
+      url = url.replaceAll('desktop', 'linux');
+      canDownload = true;
+    }
+
+    if (id.endsWith('apk')) {
+      showItemsDialog(
+        context,
+        [
+          const Text('当前尚未发布, 官网下载项暂不可用, 您可前往 GitHub 仓库 Release 页面下载测试版'),
+        ],
+      );
+      canDownload = false;
+    }
+
+    if (canDownload) downloadFile(url);
   }
 
   @override
