@@ -93,13 +93,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     if (id.endsWith('apk')) {
-      showItemsDialog(
-        context,
-        [
-          const Text('当前尚未发布, 官网下载项暂不可用, 您可前往 GitHub 仓库 Release 页面下载测试版'),
-        ],
-      );
-      canDownload = false;
+      url = '$baseUrl/android/$latestVersion/$id';
+      canDownload = true;
     }
 
     if (canDownload) downloadFile(url);
