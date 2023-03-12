@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
   void beginDownload(BuildContext context, String id) {
     Get.back();
 
-    var latestVersion = 'v3.22.04.6287';
+    var latestVersion = 'v3.23.04.6488';
 
     var baseUrl = 'https://source.catrol.cn/download/apps/kitx';
 
