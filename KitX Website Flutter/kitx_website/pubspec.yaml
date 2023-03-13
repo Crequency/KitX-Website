@@ -13,19 +13,12 @@ dependencies:
     sdk: flutter
 
   get: ^4.6.5 # 路由管理
-  f_logs: ^2.0.1 # 日志管理
   community_material_icon: ^5.9.55 # Material Design Icons 社区贡献
-  url_launcher: ^6.1.10 # 打开链接
-  package_info_plus: ^3.0.3 # 获取包信息
-  # blur: ^3.1.0 # 模糊效果
-  # flutter_gen: ^5.2.0 # 自动生成资源文件
-  # flutter_svg: ^2.0.2 # SVG 图片
-  # flutter_markdown: ^0.6.14 # Markdown 渲染
-  # http: ^0.13.5 # HTTP 请求
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_web_optimizer: ^1.1.10
 
   # flutter_lints: ^2.0.0
 
