@@ -1,4 +1,4 @@
-﻿import 'package:url_launcher/url_launcher_string.dart';
+﻿import 'dart:js' as js;
 
 import 'package:kitx_website/utils/global.dart';
 
@@ -10,5 +10,8 @@ var links = [
 ];
 
 void openLink(String key) {
-  Global.delay(() => launchUrlString(links.firstWhere((element) => element[0] == key)[1]), 200);
+  Global.delay(
+    () => js.context.callMethod('open', [links.firstWhere((element) => element[0] == key)[1]]),
+    200,
+  );
 }
