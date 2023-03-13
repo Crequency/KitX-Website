@@ -118,19 +118,28 @@ Widget getDownloadList(BuildContext context) {
         children: [
           StandardPlatformItem(
             title: 'Windows',
-            subTitle: 'Windows 10/11 supported',
+            subTitle: 'Download_Supported'.tr.replaceAll(
+                  '%content%',
+                  'Windows 10/11',
+                ),
             leading: const Icon(CommunityMaterialIcons.microsoft_windows),
             onTap: () => showItemsDialog(
               context,
               [
                 StandardDownloadItem(
-                  title: '适用于 Windows 64 位 (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Windows ${'Bits_64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'win-x64-single.pubxml',
                   onTap: () => beginDownload(context, 'win-x64-single.pubxml'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Windows 32 位 (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Windows ${'Bits_32'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'win-x86-single.pubxml',
                   onTap: () => beginDownload(context, 'win-x86-single.pubxml'),
                 ),
@@ -140,25 +149,37 @@ Widget getDownloadList(BuildContext context) {
           SizedBox(height: tilesPadding),
           StandardPlatformItem(
             title: 'GNU/Linux',
-            subTitle: 'Tested on Ubuntu 20.04+, Deepin ...',
+            subTitle: 'Download_Tested'.tr.replaceAll(
+                  '%content%',
+                  'Ubuntu 20.04+, Deepin ...',
+                ),
             leading: const Icon(CommunityMaterialIcons.linux),
             onTap: () => showItemsDialog(
               context,
               [
                 StandardDownloadItem(
-                  title: '适用于 Linux 64 位 (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Linux ${'Bits_64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'linux-x64-single.pubxml',
                   onTap: () => beginDownload(context, 'linux-x64-single.pubxml'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Linux arm 架构处理器 (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Linux ${'CPU_ARM'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'linux-arm-single.pubxml',
                   onTap: () => beginDownload(context, 'linux-arm-single.pubxml'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Linux arm 架构 64 位处理器 (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Linux ${'CPU_ARM64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'linux-arm64-single.pubxml',
                   onTap: () => beginDownload(context, 'linux-arm64-single.pubxml'),
                 ),
@@ -168,19 +189,28 @@ Widget getDownloadList(BuildContext context) {
           SizedBox(height: tilesPadding),
           StandardPlatformItem(
             title: 'MacOS',
-            subTitle: 'Tested on MacOS Monterey',
+            subTitle: 'Download_Tested'.tr.replaceAll(
+                  '%content%',
+                  'MacOS Monterey',
+                ),
             leading: const Icon(CommunityMaterialIcons.apple),
             onTap: () => showItemsDialog(
               context,
               [
                 StandardDownloadItem(
-                  title: '适用于 MacOS 64 位 (Apple 芯片) (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'MacOS ${'Bits_64'.tr} (${'CPU_Apple'.tr}) (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'osx-arm64-single.pubxml',
                   onTap: () => beginDownload(context, 'osx-arm64-single.pubxml'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 MacOS 64 位 (Intel 芯片) (包含 dotnet 6 运行时)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'MacOS ${'Bits_64'.tr} (${'CPU_Intel'.tr}) (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
+                      ),
                   subTitle: 'osx-x64-single.pubxml',
                   onTap: () => beginDownload(context, 'osx-x64-single.pubxml'),
                 ),
@@ -190,31 +220,46 @@ Widget getDownloadList(BuildContext context) {
           SizedBox(height: tilesPadding),
           StandardPlatformItem(
             title: 'Android',
-            subTitle: 'Android 5.0+ supported',
+            subTitle: 'Download_Supported'.tr.replaceAll(
+                  '%content%',
+                  'Android 5.0+',
+                ),
             leading: const Icon(CommunityMaterialIcons.android),
             onTap: () => showItemsDialog(
               context,
               [
                 StandardDownloadItem(
-                  title: '适用于 Android (包含多个架构支持)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Android (${'MultiArchSupport'.tr})',
+                      ),
                   subTitle: 'kitx-mobile-release.apk',
                   onTap: () => beginDownload(context, 'kitx-mobile-release.apk'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Android arm 架构 64 位处理器 (ABIv8)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Android ${'CPU_ARM64'.tr} (ABIv8)',
+                      ),
                   subTitle: 'kitx-mobile-arm64-v8a-release.apk',
                   onTap: () => beginDownload(context, 'kitx-mobile-arm64-v8a-release.apk'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Android arm 架构处理器 (ABIv7)',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Android ${'CPU_ARM'.tr} (ABIv7)',
+                      ),
                   subTitle: 'kitx-mobile-armeabi-v7a-release.apk',
                   onTap: () => beginDownload(context, 'kitx-mobile-armeabi-v7a-release.apk'),
                 ),
                 SizedBox(height: tilesPadding),
                 StandardDownloadItem(
-                  title: '适用于 Android x86 架构处理器 64 位',
+                  title: 'Download_ApplyTo'.tr.replaceAll(
+                        '%content%',
+                        'Android ${'CPU_x86_64'.tr}',
+                      ),
                   subTitle: 'kitx-mobile-x86_64-release.apk',
                   onTap: () => beginDownload(context, 'kitx-mobile-x86_64-release.apk'),
                 ),
@@ -225,7 +270,7 @@ Widget getDownloadList(BuildContext context) {
           StandardPlatformItem(
             enabled: false,
             title: 'iOS',
-            subTitle: 'No test yet',
+            subTitle: 'Download_NoTest'.tr,
             leading: const Icon(CommunityMaterialIcons.apple_ios),
             onTap: () {},
           ),

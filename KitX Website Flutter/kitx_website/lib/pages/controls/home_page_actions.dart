@@ -23,8 +23,8 @@ List<Widget> getActions(BuildContext context) => [
                   children: [
                     const Icon(CommunityMaterialIcons.file_document),
                     const SizedBox(width: 10),
-                    const Text(
-                      'Docs',
+                    Text(
+                      'Public_Docs'.tr,
                       style: TextStyle(fontSize: 16),
                     ),
                   ],
@@ -77,9 +77,11 @@ List<Widget> getActions(BuildContext context) => [
         itemBuilder: (context) => [
           PopupMenuItem(
             child: const Text('简体中文'),
+            onTap: () => Global.delay(() => Get.updateLocale(Locale('zh', 'CN')), 200),
           ),
           PopupMenuItem(
             child: const Text('English (US)'),
+            onTap: () => Global.delay(() => Get.updateLocale(Locale('en', 'US')), 200),
           ),
         ],
       ),
