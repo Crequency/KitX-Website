@@ -65,10 +65,7 @@ List<Widget> getActions(BuildContext context) => [
       SizedBox(width: actionsPadding),
       Obx(
         () => IconButton(
-          onPressed: () {
-            Global.themeMode = context.isDarkMode ? ThemeMode.light : ThemeMode.dark;
-            Global.themeNotifier.value = Global.themeMode;
-          },
+          onPressed: () => Global.themeNotifier.value = context.isDarkMode ? ThemeMode.light : ThemeMode.dark,
           icon: themeButtonInLightMode.value ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode),
         ),
       ),
