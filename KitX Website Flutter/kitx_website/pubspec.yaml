@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_web_optimizer: ^1.1.10
+  flutter_web_optimizer: ^1.1.12
 
   # flutter_lints: ^2.0.0
 
