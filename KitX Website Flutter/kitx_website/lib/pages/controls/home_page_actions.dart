@@ -15,52 +15,12 @@ var kitx_docs_key = 'Docs_KitX';
 var kitx_github_repo_key = 'GitHubRepo_KitX';
 
 List<Widget> getActions(BuildContext context) => [
-      Obx(
-        () => showTextOfLinkButton.value
-            ? ElevatedButton(
-                onPressed: () => openLink(kitx_docs_key),
-                child: Row(
-                  children: [
-                    const Icon(CommunityMaterialIcons.file_document),
-                    const SizedBox(width: 10),
-                    Text(
-                      'Public_Docs'.tr,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              )
-            : IconButton(
-                onPressed: () => openLink(kitx_docs_key),
-                icon: Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                  child: Icon(CommunityMaterialIcons.file_document),
-                ),
-              ),
-      ),
-      SizedBox(width: actionsPadding),
-      Obx(
-        () => showTextOfLinkButton.value
-            ? ElevatedButton(
-                onPressed: () => openLink(kitx_github_repo_key),
-                child: Row(
-                  children: [
-                    const Icon(CommunityMaterialIcons.github),
-                    const SizedBox(width: 10),
-                    const Text(
-                      'GitHub',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              )
-            : IconButton(
-                onPressed: () => openLink(kitx_github_repo_key),
-                icon: Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                  child: Icon(CommunityMaterialIcons.github),
-                ),
-              ),
+      IconButton(
+        onPressed: () => openLink(kitx_github_repo_key),
+        icon: Container(
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+          child: Icon(CommunityMaterialIcons.github),
+        ),
       ),
       SizedBox(width: actionsPadding),
       Obx(
