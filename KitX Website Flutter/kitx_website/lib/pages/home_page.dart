@@ -46,6 +46,15 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: getActions(context),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: Scaffold.of(context).openDrawer,
+              //   tooltip: '',
+            );
+          },
+        ),
       ),
       drawer: AppDrawer(),
       drawerEnableOpenDragGesture: true,
