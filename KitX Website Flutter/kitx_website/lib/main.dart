@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:kitx_website/pages/home_page.dart';
+import 'package:kitx_website/pages/navigation_page.dart';
 
 import 'package:kitx_website/themes/light_theme.dart';
 import 'package:kitx_website/themes/dark_theme.dart';
@@ -33,7 +34,7 @@ class MainApp extends StatelessWidget {
         translations: Translation(),
         locale: ui.window.locale,
         fallbackLocale: Locale('en', 'US'),
-        home: const HomePage(),
+        home: const NavigationPage(),
       ),
     );
   }

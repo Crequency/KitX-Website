@@ -8,6 +8,7 @@ class Translation extends Translations {
           'Public_Docs': '文档',
           'Home_Page': '主页',
           'Plugins_Page': '插件市场',
+          'Settings_Page': '设置',
           'Download_Tested': '在 %content% 上通过测试',
           'Download_Supported': '支持 %content%',
           'Download_NoTest': '尚未测试',
@@ -27,8 +28,9 @@ class Translation extends Translations {
         },
         'en_US': {
           'Public_Docs': 'Docs',
-          'Home_Page': 'Home Page',
+          'Home_Page': 'Home',
           'Plugins_Page': 'Plugins Market',
+          'Settings_Page': 'Settings',
           'Download_Tested': 'Tested on %content%',
           'Download_Supported': '%content% supported',
           'Download_NoTest': 'No test yet',
