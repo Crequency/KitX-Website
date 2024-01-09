@@ -26,10 +26,11 @@ class _NavigationPageState extends State<NavigationPage> {
               selectedIndex: Global.navigationIndex.value,
               groupAlignment: -1.0,
               onDestinationSelected: (int index) {
+                var delta = (index - Global.navigationIndex.value).abs();
                 Global.navigationIndex.value = index;
                 _pageController.animateToPage(
                   index,
-                  duration: Duration(milliseconds: 350),
+                  duration: Duration(milliseconds: 150 + delta * 200),
                   curve: Curves.easeInOutCubic,
                 );
               },
@@ -73,9 +74,15 @@ class _NavigationPageState extends State<NavigationPage> {
             child: PageView(
               children: [
                 ClipRect(child: const HomePage()),
-                ClipRect(child: const SizedBox()),
-                ClipRect(child: const SizedBox()),
-                ClipRect(child: const SizedBox()),
+                ClipRect(
+                    child: Center(
+                  child: const Text('Under developing ...'),
+                )),
+                ClipRect(child: DocsPage()),
+                ClipRect(
+                    child: Center(
+                  child: const Text('Under developing ...'),
+                )),
               ],
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),

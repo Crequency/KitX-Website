@@ -29,7 +29,7 @@ class Translation extends Translations {
         'en_US': {
           'Public_Docs': 'Docs',
           'Home_Page': 'Home',
-          'Plugins_Page': 'Plugins Market',
+          'Plugins_Page': 'Plugins',
           'Settings_Page': 'Settings',
           'Download_Tested': 'Tested on %content%',
           'Download_Supported': '%content% supported',
