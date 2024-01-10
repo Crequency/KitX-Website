@@ -17,6 +17,12 @@ class _NavigationPageState extends State<NavigationPage> {
   var _pageController = PageController(initialPage: 0);
 
   @override
+  void initState() {
+    super.initState();
+    Global.navPageController = _pageController;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
@@ -26,15 +32,7 @@ class _NavigationPageState extends State<NavigationPage> {
                   () => NavigationRail(
                     selectedIndex: Global.navigationIndex.value,
                     groupAlignment: -1.0,
-                    onDestinationSelected: (int index) {
-                      var delta = (index - Global.navigationIndex.value).abs();
-                      Global.navigationIndex.value = index;
-                      _pageController.animateToPage(
-                        index,
-                        duration: Duration(milliseconds: 150 + delta * 200),
-                        curve: Curves.easeInOutCubic,
-                      );
-                    },
+                    onDestinationSelected: (index) => Global.navPageTo(index),
                     useIndicator: true,
                     labelType: NavigationRailLabelType.all,
                     leading: FloatingActionButton(

@@ -14,20 +14,20 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           ListTile(title: const Text(' ')),
-          // ListTile(
-          //   leading: Icon(Icons.home),
-          //   title: Text('Home_Page'.tr),
-          //   onTap: () => Global.navigationIndex.value = 0,
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.account_balance_rounded),
-          //   title: Text('Plugins_Page'.tr),
-          //   onTap: () => Global.navigationIndex.value = 1,
-          // ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home_Page'.tr),
+            onTap: () => Global.navPageTo(0),
+          ),
+          ListTile(
+            leading: Icon(Icons.account_balance_rounded),
+            title: Text('Plugins_Page'.tr),
+            onTap: () => Global.navPageTo(1),
+          ),
           ListTile(
             leading: Icon(CommunityMaterialIcons.file_document),
             title: Text('Public_Docs'.tr),
-            onTap: () => openLink('Docs_KitX'),
+            onTap: () => Global.navPageTo(2),
           ),
           ListTile(
             leading: Icon(CommunityMaterialIcons.github),

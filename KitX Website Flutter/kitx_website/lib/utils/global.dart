@@ -8,6 +8,18 @@ class _Global {
 
   var navigationIndex = 0.obs;
 
+  late PageController navPageController;
+
+  void navPageTo(int index) {
+    var delta = (index - Global.navigationIndex.value).abs();
+    Global.navigationIndex.value = index;
+    navPageController.animateToPage(
+      index,
+      duration: Duration(milliseconds: 150 + delta * 200),
+      curve: Curves.easeInOutCubic,
+    );
+  }
+
   Future<void> init() async {}
 
   void delay(Function func, int milliseconds) {
