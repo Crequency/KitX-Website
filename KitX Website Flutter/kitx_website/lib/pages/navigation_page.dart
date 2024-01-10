@@ -21,54 +21,62 @@ class _NavigationPageState extends State<NavigationPage> {
     return Scaffold(
       body: Row(
         children: <Widget>[
-          Obx(
-            () => NavigationRail(
-              selectedIndex: Global.navigationIndex.value,
-              groupAlignment: -1.0,
-              onDestinationSelected: (int index) {
-                var delta = (index - Global.navigationIndex.value).abs();
-                Global.navigationIndex.value = index;
-                _pageController.animateToPage(
-                  index,
-                  duration: Duration(milliseconds: 150 + delta * 200),
-                  curve: Curves.easeInOutCubic,
-                );
-              },
-              useIndicator: true,
-              labelType: NavigationRailLabelType.all,
-              leading: FloatingActionButton(
-                elevation: 0,
-                onPressed: () {},
-                child: const Icon(Icons.search),
-              ),
-              destinations: <NavigationRailDestination>[
-                NavigationRailDestination(
-                  icon: const Icon(Icons.home),
-                  selectedIcon: const Icon(Icons.home_outlined),
-                  label: Text('Home_Page'.tr),
-                  padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
-                ),
-                NavigationRailDestination(
-                  icon: const Icon(CommunityMaterialIcons.cube),
-                  selectedIcon: const Icon(CommunityMaterialIcons.cube_outline),
-                  label: Text('Plugins_Page'.tr),
-                  padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
-                ),
-                NavigationRailDestination(
-                  icon: const Icon(Icons.account_balance),
-                  selectedIcon: const Icon(Icons.account_balance_outlined),
-                  label: Text('Public_Docs'.tr),
-                  padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
-                ),
-                NavigationRailDestination(
-                  icon: const Icon(Icons.settings),
-                  selectedIcon: const Icon(Icons.settings_outlined),
-                  label: Text('Settings_Page'.tr),
-                  padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
-                ),
-              ],
-            ),
-          ),
+          MediaQuery.of(context).size.width > MediaQuery.of(context).size.height
+              ? Obx(
+                  () => NavigationRail(
+                    selectedIndex: Global.navigationIndex.value,
+                    groupAlignment: -1.0,
+                    onDestinationSelected: (int index) {
+                      var delta = (index - Global.navigationIndex.value).abs();
+                      Global.navigationIndex.value = index;
+                      _pageController.animateToPage(
+                        index,
+                        duration: Duration(milliseconds: 150 + delta * 200),
+                        curve: Curves.easeInOutCubic,
+                      );
+                    },
+                    useIndicator: true,
+                    labelType: NavigationRailLabelType.all,
+                    leading: FloatingActionButton(
+                      elevation: 0,
+                      onPressed: () {},
+                      child: const Icon(Icons.search),
+                    ),
+                    destinations: <NavigationRailDestination>[
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.home),
+                        selectedIcon: const Icon(Icons.home_outlined),
+                        label: Text('Home_Page'.tr),
+                        padding:
+                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      ),
+                      NavigationRailDestination(
+                        icon: const Icon(CommunityMaterialIcons.cube),
+                        selectedIcon:
+                            const Icon(CommunityMaterialIcons.cube_outline),
+                        label: Text('Plugins_Page'.tr),
+                        padding:
+                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      ),
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.account_balance),
+                        selectedIcon:
+                            const Icon(Icons.account_balance_outlined),
+                        label: Text('Public_Docs'.tr),
+                        padding:
+                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      ),
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.settings),
+                        selectedIcon: const Icon(Icons.settings_outlined),
+                        label: Text('Settings_Page'.tr),
+                        padding:
+                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      ),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
           const VerticalDivider(thickness: 1, width: 1),
           Expanded(
             child: PageView(
