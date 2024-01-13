@@ -7,7 +7,8 @@ class Translation extends Translations {
         'zh_CN': {
           'Public_Docs': '文档',
           'Home_Page': '主页',
-          'Plugins_Page': '插件市场',
+          'Plugins_Page': '插件',
+          'Docs_Page': '文档',
           'Settings_Page': '设置',
           'Download_Tested': '在 %content% 上通过测试',
           'Download_Supported': '支持 %content%',
@@ -30,6 +31,7 @@ class Translation extends Translations {
           'Public_Docs': 'Docs',
           'Home_Page': 'Home',
           'Plugins_Page': 'Plugins',
+          'Docs_Page': 'Docs',
           'Settings_Page': 'Settings',
           'Download_Tested': 'Tested on %content%',
           'Download_Supported': '%content% supported',

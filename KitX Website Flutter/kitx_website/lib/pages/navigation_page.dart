@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kitx_website/pages/docs_page.dart';
 import 'package:kitx_website/pages/home_page.dart';
+import 'package:kitx_website/pages/plugins_page.dart';
+import 'package:kitx_website/pages/settings_page.dart';
 import 'package:kitx_website/utils/global.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -78,17 +80,11 @@ class _NavigationPageState extends State<NavigationPage> {
           const VerticalDivider(thickness: 1, width: 1),
           Expanded(
             child: PageView(
-              children: [
-                ClipRect(child: const HomePage()),
-                ClipRect(
-                    child: Center(
-                  child: const Text('Under developing ...'),
-                )),
-                ClipRect(child: DocsPage()),
-                ClipRect(
-                    child: Center(
-                  child: const Text('Under developing ...'),
-                )),
+              children: const [
+                const ClipRect(child: const HomePage()),
+                const ClipRect(child: const PluginsPage()),
+                const ClipRect(child: const DocsPage()),
+                const ClipRect(child: const SettingsPage()),
               ],
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),

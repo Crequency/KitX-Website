@@ -3,8 +3,11 @@ import 'dart:ui_web';
 
 import 'package:flutter/material.dart';
 import 'package:kitx_website/utils/global.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class DocsPage extends StatefulWidget {
+  const DocsPage({super.key});
+
   @override
   _DocsPageState createState() => _DocsPageState();
 }
@@ -51,14 +54,22 @@ class _DocsPageState extends State<DocsPage> {
         ],
       ),
       drawerEnableOpenDragGesture: false,
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: HtmlElementView(
-          viewType: 'iframe-webview',
-          onPlatformViewCreated: (int id) {},
+      body: Stack(children: [
+        Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.white,
+            size: 200,
+          ),
         ),
-      ),
+        SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: HtmlElementView(
+            viewType: 'iframe-webview',
+            onPlatformViewCreated: (int id) {},
+          ),
+        ),
+      ]),
     );
   }
 }

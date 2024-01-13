@@ -30,9 +30,22 @@ class AppDrawer extends StatelessWidget {
             onTap: () => Global.navPageTo(2),
           ),
           ListTile(
+            leading: const Icon(Icons.settings),
+            title: Text('Settings_Page'.tr),
+            onTap: () => Global.navPageTo(3),
+          ),
+          Divider(),
+          ListTile(
             leading: const Icon(CommunityMaterialIcons.github),
             title: const Text('GitHub'),
+            trailing: const Icon(Icons.open_in_new),
             onTap: () => openLink('GitHubRepo_KitX'),
+          ),
+          ListTile(
+            leading: const Icon(CommunityMaterialIcons.file_document),
+            title: Text('Public_Docs'.tr),
+            trailing: const Icon(Icons.open_in_new),
+            onTap: () => openLink('Docs_KitX'),
           ),
         ],
       ),

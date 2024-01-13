@@ -14,11 +14,13 @@ dependencies:
 
   get: ^4.6.5 # 路由管理
   community_material_icon: ^5.9.55 # Material Design Icons 社区贡献
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_web_optimizer: ^1.1.12
+  loading_animation_widget:
 
   # flutter_lints: ^2.0.0
 
