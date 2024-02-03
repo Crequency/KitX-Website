@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "KitX Website Flutter/kitx_website"
 		}
 	],
 	"settings": {}
