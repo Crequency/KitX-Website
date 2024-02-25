@@ -1,9 +1,8 @@
-import 'dart:ui' as ui;
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:kitx_website/pages/home_page.dart';
+import 'package:kitx_website/pages/navigation_page.dart';
 
 import 'package:kitx_website/themes/light_theme.dart';
 import 'package:kitx_website/themes/dark_theme.dart';
@@ -31,9 +30,9 @@ class MainApp extends StatelessWidget {
         darkTheme: darkThemeData,
         debugShowCheckedModeBanner: false,
         translations: Translation(),
-        locale: ui.window.locale,
+        locale: PlatformDispatcher.instance.locale,
         fallbackLocale: Locale('en', 'US'),
-        home: const HomePage(),
+        home: const NavigationPage(),
       ),
     );
   }

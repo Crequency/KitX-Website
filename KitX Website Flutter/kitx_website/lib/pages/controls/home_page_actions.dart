@@ -16,17 +16,28 @@ var kitx_github_repo_key = 'GitHubRepo_KitX';
 
 List<Widget> getActions(BuildContext context) => [
       IconButton(
-        onPressed: () => openLink(kitx_github_repo_key),
+          onPressed: () => openLink(kitx_github_repo_key),
+          icon: Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+            child: Icon(CommunityMaterialIcons.github),
+          ),
+          tooltip: 'GitHub'),
+      SizedBox(width: actionsPadding),
+      IconButton(
+        onPressed: () => openLink(kitx_docs_key),
         icon: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-          child: Icon(CommunityMaterialIcons.github),
+          child: Icon(CommunityMaterialIcons.file_document),
         ),
+        tooltip: 'Public_Docs'.tr,
       ),
       SizedBox(width: actionsPadding),
       Obx(
         () => IconButton(
-          onPressed: () => Global.themeNotifier.value = context.isDarkMode ? ThemeMode.light : ThemeMode.dark,
-          icon: themeButtonInLightMode.value ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode),
+          onPressed: () => Global.themeNotifier.value =
+              context.isDarkMode ? ThemeMode.light : ThemeMode.dark,
+          icon: themeButtonInLightMode.value
+              ? const Icon(Icons.light_mode)
+              : const Icon(Icons.dark_mode),
         ),
       ),
       SizedBox(width: actionsPadding),
@@ -37,11 +48,13 @@ List<Widget> getActions(BuildContext context) => [
         itemBuilder: (context) => [
           PopupMenuItem(
             child: const Text('简体中文'),
-            onTap: () => Global.delay(() => Get.updateLocale(Locale('zh', 'CN')), 200),
+            onTap: () =>
+                Global.delay(() => Get.updateLocale(Locale('zh', 'CN')), 200),
           ),
           PopupMenuItem(
             child: const Text('English (US)'),
-            onTap: () => Global.delay(() => Get.updateLocale(Locale('en', 'US')), 200),
+            onTap: () =>
+                Global.delay(() => Get.updateLocale(Locale('en', 'US')), 200),
           ),
         ],
       ),

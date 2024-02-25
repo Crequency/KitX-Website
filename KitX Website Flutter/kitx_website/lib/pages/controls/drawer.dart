@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -14,43 +15,38 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           ListTile(title: const Text(' ')),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: const Icon(Icons.home),
             title: Text('Home_Page'.tr),
-            onTap: () => openLink('Home_Page'),
+            onTap: () => Global.navPageTo(0),
           ),
           ListTile(
-            leading: Icon(Icons.account_balance_rounded),
+            leading: const Icon(Icons.account_balance_rounded),
             title: Text('Plugins_Page'.tr),
-            onTap: () {},
+            onTap: () => Global.navPageTo(1),
           ),
           ListTile(
-            leading: Icon(CommunityMaterialIcons.file_document),
+            leading: const Icon(CommunityMaterialIcons.file_document),
             title: Text('Public_Docs'.tr),
-            onTap: () => openLink('Docs_KitX'),
+            onTap: () => Global.navPageTo(2),
           ),
           ListTile(
-            leading: Icon(CommunityMaterialIcons.github),
+            leading: const Icon(Icons.settings),
+            title: Text('Settings_Page'.tr),
+            onTap: () => Global.navPageTo(3),
+          ),
+          Divider(),
+          ListTile(
+            leading: const Icon(CommunityMaterialIcons.github),
             title: const Text('GitHub'),
+            trailing: const Icon(Icons.open_in_new),
             onTap: () => openLink('GitHubRepo_KitX'),
           ),
-          // DrawerHeader(
-          //   decoration: BoxDecoration(
-          //     // color: Colors.blue,
-          //     image: const DecorationImage(
-          //       alignment: Alignment.topCenter,
-          //       image: AssetImage('assets/KitX-Background.png'),
-          //       fit: BoxFit.cover,
-          //     ),
-          //   ),
-          //   child: Text(
-          //     '',
-          //     // 'Drawer_Title'.tr,
-          //     style: TextStyle(
-          //       color: Colors.white,
-          //       fontSize: 24,
-          //     ),
-          //   ),
-          // ),
+          ListTile(
+            leading: const Icon(CommunityMaterialIcons.file_document),
+            title: Text('Public_Docs'.tr),
+            trailing: const Icon(Icons.open_in_new),
+            onTap: () => openLink('Docs_KitX'),
+          ),
         ],
       ),
     );

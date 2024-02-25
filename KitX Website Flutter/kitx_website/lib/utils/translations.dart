@@ -7,7 +7,9 @@ class Translation extends Translations {
         'zh_CN': {
           'Public_Docs': '文档',
           'Home_Page': '主页',
-          'Plugins_Page': '插件市场',
+          'Plugins_Page': '插件',
+          'Docs_Page': '文档',
+          'Settings_Page': '设置',
           'Download_Tested': '在 %content% 上通过测试',
           'Download_Supported': '支持 %content%',
           'Download_NoTest': '尚未测试',
@@ -27,8 +29,10 @@ class Translation extends Translations {
         },
         'en_US': {
           'Public_Docs': 'Docs',
-          'Home_Page': 'Home Page',
-          'Plugins_Page': 'Plugins Market',
+          'Home_Page': 'Home',
+          'Plugins_Page': 'Plugins',
+          'Docs_Page': 'Docs',
+          'Settings_Page': 'Settings',
           'Download_Tested': 'Tested on %content%',
           'Download_Supported': '%content% supported',
           'Download_NoTest': 'No test yet',

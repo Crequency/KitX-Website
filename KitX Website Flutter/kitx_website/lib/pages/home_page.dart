@@ -20,7 +20,8 @@ class _HomePageState extends State<HomePage> {
     if (width != null) {
       if (width <= 500 && showTextOfLinkButton.value)
         showTextOfLinkButton.value = false;
-      else if (width > 500 && !showTextOfLinkButton.value) showTextOfLinkButton.value = true;
+      else if (width > 500 && !showTextOfLinkButton.value)
+        showTextOfLinkButton.value = true;
     }
   }
 
@@ -42,7 +43,9 @@ class _HomePageState extends State<HomePage> {
         title: Obx(
           () => Text(
             showTextOfLinkButton.value ? 'KitX Website' : 'KitX',
-            overflow: showTextOfLinkButton.value ? TextOverflow.fade : TextOverflow.ellipsis,
+            overflow: showTextOfLinkButton.value
+                ? TextOverflow.fade
+                : TextOverflow.ellipsis,
           ),
         ),
         actions: getActions(context),
