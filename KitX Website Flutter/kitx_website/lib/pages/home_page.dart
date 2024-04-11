@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:kitx_website/pages/controls/home_page_actions.dart';
-import 'package:kitx_website/pages/controls/drawer.dart';
 import 'package:kitx_website/pages/controls/download_list.dart';
+import 'package:kitx_website/pages/controls/drawer.dart';
+import 'package:kitx_website/pages/controls/home_page_actions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,10 +17,11 @@ class _HomePageState extends State<HomePage> {
   void checkWindowWidth() {
     var width = window.innerWidth;
     if (width != null) {
-      if (width <= 500 && showTextOfLinkButton.value)
+      if (width <= 500 && showTextOfLinkButton.value) {
         showTextOfLinkButton.value = false;
-      else if (width > 500 && !showTextOfLinkButton.value)
+      } else if (width > 500 && !showTextOfLinkButton.value) {
         showTextOfLinkButton.value = true;
+      }
     }
   }
 
@@ -43,9 +43,7 @@ class _HomePageState extends State<HomePage> {
         title: Obx(
           () => Text(
             showTextOfLinkButton.value ? 'KitX Website' : 'KitX',
-            overflow: showTextOfLinkButton.value
-                ? TextOverflow.fade
-                : TextOverflow.ellipsis,
+            overflow: showTextOfLinkButton.value ? TextOverflow.fade : TextOverflow.ellipsis,
           ),
         ),
         actions: getActions(context),

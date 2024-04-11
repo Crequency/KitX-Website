@@ -1,17 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:kitx_website/pages/navigation_page.dart';
-
-import 'package:kitx_website/themes/light_theme.dart';
 import 'package:kitx_website/themes/dark_theme.dart';
-
+import 'package:kitx_website/themes/light_theme.dart';
 import 'package:kitx_website/utils/global.dart';
-import 'package:kitx_website/utils/translations.dart';
+import 'package:kitx_website/utils/translation/translations.dart';
 
 Future<void> main() async {
-  await Global.init();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await app.init();
 
   runApp(MainApp());
 }
@@ -22,7 +21,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeMode>(
-      valueListenable: Global.themeNotifier,
+      valueListenable: app.themeNotifier,
       builder: (context, mode, _) => GetMaterialApp(
         title: 'KitX Website',
         themeMode: mode,

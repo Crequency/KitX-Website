@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/drawer.dart';
 
 class PluginsPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _PluginsPageState extends State<PluginsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PluginsPage'),
+        title: Text('Plugins_Page'.tr),
       ),
       drawer: AppDrawer(),
       drawerEnableOpenDragGesture: true,

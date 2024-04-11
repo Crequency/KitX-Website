@@ -1,7 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'package:community_material_icon/community_material_icon.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:community_material_icon/community_material_icon.dart';
-
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
 
@@ -11,12 +10,9 @@ var showTextOfLinkButton = true.obs;
 var actionsPadding = 5.0;
 var actionsMargin = 10.0;
 
-var kitx_docs_key = 'Docs_KitX';
-var kitx_github_repo_key = 'GitHubRepo_KitX';
-
 List<Widget> getActions(BuildContext context) => [
       IconButton(
-          onPressed: () => openLink(kitx_github_repo_key),
+          onPressed: () => openLink('GitHubRepo_KitX'),
           icon: Container(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
             child: Icon(CommunityMaterialIcons.github),
@@ -24,7 +20,7 @@ List<Widget> getActions(BuildContext context) => [
           tooltip: 'GitHub'),
       SizedBox(width: actionsPadding),
       IconButton(
-        onPressed: () => openLink(kitx_docs_key),
+        onPressed: () => openLink('Docs_KitX'),
         icon: Container(
           child: Icon(CommunityMaterialIcons.file_document),
         ),
@@ -33,11 +29,8 @@ List<Widget> getActions(BuildContext context) => [
       SizedBox(width: actionsPadding),
       Obx(
         () => IconButton(
-          onPressed: () => Global.themeNotifier.value =
-              context.isDarkMode ? ThemeMode.light : ThemeMode.dark,
-          icon: themeButtonInLightMode.value
-              ? const Icon(Icons.light_mode)
-              : const Icon(Icons.dark_mode),
+          onPressed: () => app.themeNotifier.value = context.isDarkMode ? ThemeMode.light : ThemeMode.dark,
+          icon: themeButtonInLightMode.value ? const Icon(Icons.light_mode) : const Icon(Icons.dark_mode),
         ),
       ),
       SizedBox(width: actionsPadding),
@@ -48,13 +41,11 @@ List<Widget> getActions(BuildContext context) => [
         itemBuilder: (context) => [
           PopupMenuItem(
             child: const Text('简体中文'),
-            onTap: () =>
-                Global.delay(() => Get.updateLocale(Locale('zh', 'CN')), 200),
+            onTap: () => app.delay(() => Get.updateLocale(Locale('zh', 'CN')), 200),
           ),
           PopupMenuItem(
             child: const Text('English (US)'),
-            onTap: () =>
-                Global.delay(() => Get.updateLocale(Locale('en', 'US')), 200),
+            onTap: () => app.delay(() => Get.updateLocale(Locale('en', 'US')), 200),
           ),
         ],
       ),

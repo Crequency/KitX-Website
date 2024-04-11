@@ -21,7 +21,7 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   void initState() {
     super.initState();
-    Global.navPageController = _pageController;
+    app.navPageController = _pageController;
   }
 
   @override
@@ -32,46 +32,40 @@ class _NavigationPageState extends State<NavigationPage> {
           MediaQuery.of(context).size.width > MediaQuery.of(context).size.height
               ? Obx(
                   () => NavigationRail(
-                    selectedIndex: Global.navigationIndex.value,
+                    selectedIndex: app.navigationIndex.value,
                     groupAlignment: -1.0,
-                    onDestinationSelected: (index) => Global.navPageTo(index),
+                    onDestinationSelected: (index) => app.navPageTo(index),
                     useIndicator: true,
                     labelType: NavigationRailLabelType.all,
-                    leading: FloatingActionButton(
-                      elevation: 0,
-                      onPressed: () {},
-                      child: const Icon(Icons.search),
-                    ),
+                    // leading: FloatingActionButton(
+                    //   elevation: 0,
+                    //   onPressed: () {},
+                    //   child: const Icon(Icons.search),
+                    // ),
                     destinations: <NavigationRailDestination>[
                       NavigationRailDestination(
                         icon: const Icon(Icons.home),
                         selectedIcon: const Icon(Icons.home_outlined),
                         label: Text('Home_Page'.tr),
-                        padding:
-                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                        padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(CommunityMaterialIcons.cube),
-                        selectedIcon:
-                            const Icon(CommunityMaterialIcons.cube_outline),
+                        selectedIcon: const Icon(CommunityMaterialIcons.cube_outline),
                         label: Text('Plugins_Page'.tr),
-                        padding:
-                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                        padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(Icons.account_balance),
-                        selectedIcon:
-                            const Icon(Icons.account_balance_outlined),
+                        selectedIcon: const Icon(Icons.account_balance_outlined),
                         label: Text('Public_Docs'.tr),
-                        padding:
-                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                        padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(Icons.settings),
                         selectedIcon: const Icon(Icons.settings_outlined),
                         label: Text('Settings_Page'.tr),
-                        padding:
-                            EdgeInsets.symmetric(vertical: _buttonsPadding),
+                        padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                     ],
                   ),

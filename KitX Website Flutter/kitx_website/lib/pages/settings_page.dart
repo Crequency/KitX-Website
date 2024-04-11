@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/drawer.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SettingsPage'),
+        title: Text('Settings_Page'.tr),
       ),
       drawer: AppDrawer(),
       drawerEnableOpenDragGesture: true,

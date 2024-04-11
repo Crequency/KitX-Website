@@ -2,7 +2,7 @@
 
 var tileRadius = ContinuousRectangleBorder(borderRadius: BorderRadius.circular(10.0));
 
-Widget ListTileItem({
+Widget listTileItem({
   bool? enabled,
   String? title,
   String? subTitle,
@@ -15,21 +15,21 @@ Widget ListTileItem({
     enabled: enabled ?? true,
     title: Text(title!),
     subtitle: Text(subTitle!),
-    shape: shape,
+    shape: shape ?? tileRadius,
     leading: leading,
     trailing: trailing,
     onTap: onTap,
   );
 }
 
-Widget StandardPlatformItem({
+Widget standardPlatformItem({
   bool? enabled,
   String? title,
   String? subTitle,
   Widget? leading,
   void Function()? onTap,
 }) {
-  return ListTileItem(
+  return listTileItem(
     enabled: enabled ?? true,
     title: title,
     subTitle: subTitle,
@@ -40,14 +40,14 @@ Widget StandardPlatformItem({
   );
 }
 
-Widget StandardDownloadItem({
+Widget standardDownloadItem({
   bool? enabled,
   String? title,
   String? subTitle,
   Widget? trailing,
   void Function()? onTap,
 }) {
-  return ListTileItem(
+  return listTileItem(
     enabled: enabled ?? true,
     title: title,
     subTitle: subTitle,
