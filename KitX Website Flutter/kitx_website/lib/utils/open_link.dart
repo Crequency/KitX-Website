@@ -4,6 +4,7 @@ import 'package:kitx_website/utils/global.dart';
 
 var links = [
   ['GitHubRepo_KitX', 'https://github.com/Crequency/KitX'],
+  ['GitHubRepo_KitX_Releases', 'https://github.com/Crequency/KitX/releases'],
   ['GitHubRepo_KitX-Mobile', 'https://github.com/Crequency/KitX-Mobile'],
   ['GitHubRepo_KitX-Mobile_Releases', 'https://github.com/Crequency/KitX-Mobile/releases'],
   ['GitHubRepo_KitX-Website', 'https://github.com/Crequency/KitX-Website'],

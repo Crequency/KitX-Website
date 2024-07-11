@@ -255,7 +255,7 @@ Widget getDownloadList(BuildContext context) {
               subTitle: 'Download_LookingForElderVersions'.tr,
               leading: const Icon(CommunityMaterialIcons.view_list),
               trailing: const Icon(CommunityMaterialIcons.open_in_new),
-              onTap: () => openLink('GitHubRepo_KitX-Mobile_Releases'),
+              onTap: () => openLink('GitHubRepo_KitX_Releases'),
             ),
             const SizedBox(height: tilesPadding),
             Row(
