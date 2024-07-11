@@ -121,6 +121,7 @@ class _NavigationPageState extends State<NavigationPage> {
                         );
                       },
                     ),
+                    forceMaterialTransparency: true,
                   ),
                   drawer: AppDrawer(),
                   drawerEnableOpenDragGesture: true,
