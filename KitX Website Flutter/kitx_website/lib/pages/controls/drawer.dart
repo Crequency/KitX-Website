@@ -20,13 +20,18 @@ class AppDrawer extends StatelessWidget {
             onTap: () => app.navPageTo(0),
           ),
           ListTile(
-            leading: const Icon(Icons.account_balance_rounded),
+            leading: const Icon(CommunityMaterialIcons.cube),
             title: Text('Plugins_Page'.tr),
             onTap: () => app.navPageTo(1),
           ),
+          // ListTile(
+          //   leading: const Icon(CommunityMaterialIcons.file_document),
+          //   title: Text('Docs_Page'.tr),
+          //   onTap: () => app.navPageTo(2),
+          // ),
           ListTile(
-            leading: const Icon(CommunityMaterialIcons.file_document),
-            title: Text('Public_Docs'.tr),
+            leading: const Icon(Icons.timeline),
+            title: Text('Milestones_Page'.tr),
             onTap: () => app.navPageTo(2),
           ),
           ListTile(

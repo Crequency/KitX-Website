@@ -4,6 +4,7 @@ const Map<String, String> zh_CN = {
   'Home_Page': '主页',
   'Plugins_Page': '插件',
   'Docs_Page': '文档',
+  'Milestones_Page': '里程碑',
   'Settings_Page': '设置',
   'Download_Tested': '在 @content 上通过测试',
   'Download_Supported': '支持 @content',

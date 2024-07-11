@@ -1,8 +1,8 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kitx_website/pages/docs_page.dart';
 import 'package:kitx_website/pages/home_page.dart';
+import 'package:kitx_website/pages/milestone_page.dart';
 import 'package:kitx_website/pages/plugins_page.dart';
 import 'package:kitx_website/pages/settings_page.dart';
 import 'package:kitx_website/utils/global.dart';
@@ -42,6 +42,7 @@ class _NavigationPageState extends State<NavigationPage> {
                     //   onPressed: () {},
                     //   child: const Icon(Icons.search),
                     // ),
+                    minWidth: 90,
                     destinations: <NavigationRailDestination>[
                       NavigationRailDestination(
                         icon: const Icon(Icons.home),
@@ -55,10 +56,16 @@ class _NavigationPageState extends State<NavigationPage> {
                         label: Text('Plugins_Page'.tr),
                         padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
+                      // NavigationRailDestination(
+                      //   icon: const Icon(Icons.account_balance),
+                      //   selectedIcon: const Icon(Icons.account_balance_outlined),
+                      //   label: Text('Docs_Page'.tr),
+                      //   padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      // ),
                       NavigationRailDestination(
-                        icon: const Icon(Icons.account_balance),
-                        selectedIcon: const Icon(Icons.account_balance_outlined),
-                        label: Text('Public_Docs'.tr),
+                        icon: const Icon(Icons.timeline),
+                        selectedIcon: const Icon(Icons.timeline_outlined),
+                        label: Text('Milestones_Page'.tr),
                         padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                       NavigationRailDestination(
@@ -77,7 +84,8 @@ class _NavigationPageState extends State<NavigationPage> {
               children: const [
                 const ClipRect(child: const HomePage()),
                 const ClipRect(child: const PluginsPage()),
-                const ClipRect(child: const DocsPage()),
+                // const ClipRect(child: const DocsPage()),
+                const ClipRect(child: const MilestonesPage()),
                 const ClipRect(child: const SettingsPage()),
               ],
               controller: _pageController,

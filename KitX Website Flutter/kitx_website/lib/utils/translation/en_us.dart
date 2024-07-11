@@ -4,6 +4,7 @@ const Map<String, String> en_US = {
   'Home_Page': 'Home',
   'Plugins_Page': 'Plugins',
   'Docs_Page': 'Docs',
+  'Milestones_Page': 'Milestones',
   'Settings_Page': 'Settings',
   'Download_Tested': 'Tested on @content',
   'Download_Supported': '@content supported',
