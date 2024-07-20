@@ -17,19 +17,19 @@ jobs:
                   channel: stable
             - run: flutter --version
             - name: Enable Flutter Web
-              working-directory: kitx_website
+              working-directory: "KitX Website Flutter/kitx_website"
               run: flutter config --enable-web
             - name: Download Dependencies
-              working-directory: kitx_website
+              working-directory: "KitX Website Flutter/kitx_website"
               run: flutter pub get
             - name: Build
-              working-directory: kitx_website
+              working-directory: "KitX Website Flutter/kitx_website"
               run: flutter build web
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
               with:
                 github_token: ${{ secrets.GITHUBTOKEN }}
-                publish_dir: ./kitx_website/build/web
+                publish_dir: "./KitX Website Flutter/kitx_website/build/web"
                 force_orphan: true
                 user_name: 'github-ci[bot]'
                 user_email: 'github-actions[bot]@users.noreply.github.com'
