@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:kitx_website/data/milestones.dart';
 import 'package:timelines/timelines.dart';
@@ -22,13 +20,15 @@ class _MilestonesPageState extends State<MilestonesPage> {
   Widget build(BuildContext context) {
     var milestones = getMilestones(Get.locale!);
 
+    var isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Center(
       child: Timeline.tileBuilder(
         padding: EdgeInsets.symmetric(vertical: 20),
-        theme: TimelineThemeData.fallback().copyWith(color: context.iconColor),
+        theme: TimelineThemeData.fallback().copyWith(color: context.iconColor, nodePosition: isLandscape ? null : 0.1),
         physics: BouncingScrollPhysics(),
         builder: TimelineTileBuilder.fromStyle(
-          contentsAlign: ContentsAlign.alternating,
+          contentsAlign: isLandscape ? ContentsAlign.alternating : ContentsAlign.basic,
           indicatorStyle: IndicatorStyle.outlined,
           contentsBuilder: (context, index) {
             var milestone = milestones[index];
@@ -64,13 +64,13 @@ class _MilestonesPageState extends State<MilestonesPage> {
             return Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
-                crossAxisAlignment: index % 2 == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                crossAxisAlignment: isLandscape ? (index % 2 == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end) : CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Row(
-                      mainAxisAlignment: index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end,
-                      children: index % 2 == 0 ? head : head.reversed.toList(),
+                      mainAxisAlignment: isLandscape ? (index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end) : MainAxisAlignment.start,
+                      children: isLandscape ? (index % 2 == 0 ? head : head.reversed.toList()) : head,
                     ),
                   ),
                   Card(
@@ -79,7 +79,7 @@ class _MilestonesPageState extends State<MilestonesPage> {
                       child: Text(
                         milestone.event,
                         style: context.textTheme.bodyLarge,
-                        textAlign: index % 2 == 0 ? TextAlign.left : TextAlign.right,
+                        textAlign: isLandscape ? (index % 2 == 0 ? TextAlign.left : TextAlign.right) : TextAlign.left,
                       ),
                     ),
                   ),
