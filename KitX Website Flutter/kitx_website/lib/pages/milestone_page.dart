@@ -25,6 +25,7 @@ class _MilestonesPageState extends State<MilestonesPage> {
     return Center(
       child: Timeline.tileBuilder(
         padding: EdgeInsets.symmetric(vertical: 20),
+        theme: TimelineThemeData.fallback().copyWith(color: context.iconColor),
         physics: BouncingScrollPhysics(),
         builder: TimelineTileBuilder.fromStyle(
           contentsAlign: ContentsAlign.alternating,
@@ -45,7 +46,7 @@ class _MilestonesPageState extends State<MilestonesPage> {
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 20),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 5),
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -65,13 +66,22 @@ class _MilestonesPageState extends State<MilestonesPage> {
               child: Column(
                 crossAxisAlignment: index % 2 == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end,
-                    children: index % 2 == 0 ? head : head.reversed.toList(),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end,
+                      children: index % 2 == 0 ? head : head.reversed.toList(),
+                    ),
                   ),
-                  Text(
-                    milestone.event,
-                    style: context.textTheme.bodyLarge,
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        milestone.event,
+                        style: context.textTheme.bodyLarge,
+                        textAlign: index % 2 == 0 ? TextAlign.left : TextAlign.right,
+                      ),
+                    ),
                   ),
                 ],
               ),
