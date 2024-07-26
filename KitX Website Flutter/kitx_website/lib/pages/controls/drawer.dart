@@ -1,6 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'package:community_material_icon/community_material_icon.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
 
@@ -17,22 +17,27 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: Text('Home_Page'.tr),
-            onTap: () => Global.navPageTo(0),
+            onTap: () => app.navPageTo(0),
           ),
           ListTile(
-            leading: const Icon(Icons.account_balance_rounded),
+            leading: const Icon(CommunityMaterialIcons.cube),
             title: Text('Plugins_Page'.tr),
-            onTap: () => Global.navPageTo(1),
+            onTap: () => app.navPageTo(1),
           ),
+          // ListTile(
+          //   leading: const Icon(CommunityMaterialIcons.file_document),
+          //   title: Text('Docs_Page'.tr),
+          //   onTap: () => app.navPageTo(2),
+          // ),
           ListTile(
-            leading: const Icon(CommunityMaterialIcons.file_document),
-            title: Text('Public_Docs'.tr),
-            onTap: () => Global.navPageTo(2),
+            leading: const Icon(Icons.timeline),
+            title: Text('Milestones_Page'.tr),
+            onTap: () => app.navPageTo(2),
           ),
           ListTile(
             leading: const Icon(Icons.settings),
             title: Text('Settings_Page'.tr),
-            onTap: () => Global.navPageTo(3),
+            onTap: () => app.navPageTo(3),
           ),
           Divider(),
           ListTile(

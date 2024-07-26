@@ -3,28 +3,27 @@ description: Website for KitX Project
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.2.0
 
 environment:
-  sdk: ">=2.19.2 <3.0.0"
+    sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
-  get: ^4.6.5 # 路由管理
-  community_material_icon: ^5.9.55 # Material Design Icons 社区贡献
-  loading_animation_widget: ^1.2.0+4
+    community_material_icon: ^5.9.55
+    flutter:
+        sdk: flutter
+    get: ^4.6.6
+    loading_animation_widget: ^1.2.1
+    timelines: ^0.1.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_web_optimizer: ^1.1.12
-
-  # flutter_lints: ^2.0.0
+    flutter_lints: ^3.0.2
+    flutter_test:
+        sdk: flutter
+    flutter_web_optimizer: ^1.4.1
 
 flutter:
-  uses-material-design: true
+    uses-material-design: true
 
-  assets:
-    - assets/
+    assets:
+        - assets/

@@ -36,12 +36,12 @@ class _DocsPageState extends State<DocsPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
-            onPressed: () => Global.navPageTo(0),
+            onPressed: () => app.navPageTo(0),
           ),
           actionsPadding,
           IconButton(
             icon: const Icon(Icons.account_balance_rounded),
-            onPressed: () => Global.navPageTo(1),
+            onPressed: () => app.navPageTo(1),
           ),
           actionsPadding,
           IconButton(

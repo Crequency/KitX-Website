@@ -3,11 +3,11 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/utils/global.dart';
+import 'package:kitx_website/utils/open_link.dart';
 
-var tilesPadding = 15.0;
+var downloadSource = 'GitHub'.obs;
 
 void downloadFile(String url) {
   AnchorElement(href: url)
@@ -52,7 +52,7 @@ void beginDownload(BuildContext context, String id) {
 }
 
 void showItemsDialog(BuildContext context, List<Widget> items) {
-  Global.delay(
+  app.delay(
     () => showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -72,209 +72,230 @@ void showItemsDialog(BuildContext context, List<Widget> items) {
 }
 
 Widget getDownloadList(BuildContext context) {
-  return ListView(
+  var runtimes = ['dotnet 8'];
+
+  const tilesPadding = 15.0;
+
+  const heroIconSize = 168.0;
+
+  const hideIconColor = true;
+
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Container(
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.only(top: 0),
-        width: 192,
-        height: 192,
-        child: InkWell(
-          borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
-          splashColor: context.iconColor?.withOpacity(0.3),
-          onTap: () {},
-          child: const Image(
-            width: 192,
-            height: 192,
-            alignment: Alignment.center,
-            image: AssetImage('assets/KitX-Icon-192x-margin-2x.png'),
-            fit: BoxFit.fitWidth,
-          ),
+      InkWell(
+        borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
+        splashColor: context.iconColor?.withOpacity(0.3),
+        onTap: () {},
+        child: const Image(
+          width: heroIconSize,
+          height: heroIconSize,
+          alignment: Alignment.center,
+          image: const AssetImage('assets/KitX-Icon-192x-margin-2x.png'),
+          fit: BoxFit.fitWidth,
         ),
       ),
-      Container(
-        alignment: Alignment.center,
-        child: Column(
+      const Column(
+        children: [
+          const Text('KitX', style: const TextStyle(fontSize: 46)),
+          const Text('v3.23.04'),
+        ],
+      ),
+      const SizedBox(height: 15),
+      const Divider(),
+      const SizedBox(height: 15),
+      Expanded(
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            const Text(
-              'KitX',
-              style: TextStyle(
-                fontSize: 50,
+            standardPlatformItem(
+              title: 'Windows',
+              subTitle: 'Download_Supported'.trParams({'content': 'Windows 10/11'}),
+              // ignore: dead_code
+              leading: const Icon(CommunityMaterialIcons.microsoft_windows, color: hideIconColor ? null : Colors.blue),
+              onTap: () => showItemsDialog(
+                context,
+                [
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Windows ${'Bits_64'.tr} (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'win-x64-single.pubxml',
+                    onTap: () => beginDownload(context, 'win-x64-single.pubxml'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Windows ${'Bits_32'.tr} (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'win-x86-single.pubxml',
+                    onTap: () => beginDownload(context, 'win-x86-single.pubxml'),
+                  ),
+                ],
               ),
             ),
-            Text('v3.23.04'),
-            // Obx(
-            //   () => Text(Global.versionString.value),
-            // ),
+            const SizedBox(height: tilesPadding),
+            standardPlatformItem(
+              title: 'GNU/Linux',
+              subTitle: 'Download_Tested'.trParams({'content': 'Ubuntu 20.04+, Deepin ...'}),
+              // ignore: dead_code
+              leading: const Icon(CommunityMaterialIcons.linux, color: hideIconColor ? null : Colors.amberAccent),
+              onTap: () => showItemsDialog(
+                context,
+                [
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Linux ${'Bits_64'.tr} (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'linux-x64-single.pubxml',
+                    onTap: () => beginDownload(context, 'linux-x64-single.pubxml'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Linux ${'CPU_ARM'.tr} (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'linux-arm-single.pubxml',
+                    onTap: () => beginDownload(context, 'linux-arm-single.pubxml'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Linux ${'CPU_ARM64'.tr} (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'linux-arm64-single.pubxml',
+                    onTap: () => beginDownload(context, 'linux-arm64-single.pubxml'),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: tilesPadding),
+            standardPlatformItem(
+              title: 'MacOS',
+              subTitle: 'Download_Tested'.trParams({'content': 'MacOS Monterey'}),
+              // ignore: dead_code
+              leading: const Icon(CommunityMaterialIcons.apple, color: hideIconColor ? null : Colors.white70),
+              onTap: () => showItemsDialog(
+                context,
+                [
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'MacOS ${'Bits_64'.tr} (${'CPU_Apple'.tr}) (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'osx-arm64-single.pubxml',
+                    onTap: () => beginDownload(context, 'osx-arm64-single.pubxml'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'MacOS ${'Bits_64'.tr} (${'CPU_Intel'.tr}) (${'With_Runtime'.trArgs(runtimes)})',
+                    }),
+                    subTitle: 'osx-x64-single.pubxml',
+                    onTap: () => beginDownload(context, 'osx-x64-single.pubxml'),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: tilesPadding),
+            standardPlatformItem(
+              title: 'Android',
+              subTitle: 'Download_Supported'.trParams({
+                'content': 'Android 5.0+',
+              }),
+              // ignore: dead_code
+              leading: const Icon(CommunityMaterialIcons.android, color: hideIconColor ? null : Colors.greenAccent),
+              onTap: () => showItemsDialog(
+                context,
+                [
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Android (${'MultiArchSupport'.tr})',
+                    }),
+                    subTitle: 'kitx-mobile-release.apk',
+                    onTap: () => beginDownload(context, 'kitx-mobile-release.apk'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Android ${'CPU_ARM64'.tr} (ABIv8)',
+                    }),
+                    subTitle: 'kitx-mobile-arm64-v8a-release.apk',
+                    onTap: () => beginDownload(context, 'kitx-mobile-arm64-v8a-release.apk'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Android ${'CPU_ARM'.tr} (ABIv7)',
+                    }),
+                    subTitle: 'kitx-mobile-armeabi-v7a-release.apk',
+                    onTap: () => beginDownload(context, 'kitx-mobile-armeabi-v7a-release.apk'),
+                  ),
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Download_ApplyTo'.trParams({
+                      'content': 'Android ${'CPU_x86_64'.tr}',
+                    }),
+                    subTitle: 'kitx-mobile-x86_64-release.apk',
+                    onTap: () => beginDownload(context, 'kitx-mobile-x86_64-release.apk'),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: tilesPadding),
+            standardPlatformItem(
+              enabled: false,
+              title: 'iOS',
+              subTitle: 'Download_NoTest'.tr,
+              leading: const Icon(CommunityMaterialIcons.apple_ios),
+              onTap: () {},
+            ),
+            const SizedBox(height: tilesPadding),
+            listTileItem(
+              title: 'Download_ElderVersions'.tr,
+              subTitle: 'Download_LookingForElderVersions'.tr,
+              leading: const Icon(CommunityMaterialIcons.view_list),
+              trailing: const Icon(CommunityMaterialIcons.open_in_new),
+              onTap: () => openLink('GitHubRepo_KitX_Releases'),
+            ),
+            const SizedBox(height: tilesPadding),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Download_SelectDownloadSource'.tr),
+                const SizedBox(width: 20),
+                Container(
+                  width: 120,
+                  child: Obx(
+                    () => DropdownButton<String>(
+                      value: downloadSource.value,
+                      icon: const Icon(Icons.arrow_downward),
+                      isExpanded: true,
+                      onChanged: (String? value) {
+                        if (value == null) return;
+
+                        downloadSource.value = value;
+                      },
+                      items: const [
+                        const DropdownMenuItem(
+                          child: const Text('GitHub'),
+                          value: 'GitHub',
+                        ),
+                        const DropdownMenuItem(
+                          child: const Text('Gitee'),
+                          value: 'Gitee',
+                        ),
+                        const DropdownMenuItem(
+                          child: const Text('Crequency'),
+                          value: 'Crequency',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
-      ),
-      SizedBox(height: 30),
-      Divider(),
-      SizedBox(height: 30),
-      ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          StandardPlatformItem(
-            title: 'Windows',
-            subTitle: 'Download_Supported'.tr.replaceAll(
-                  '%content%',
-                  'Windows 10/11',
-                ),
-            leading: const Icon(CommunityMaterialIcons.microsoft_windows),
-            onTap: () => showItemsDialog(
-              context,
-              [
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Windows ${'Bits_64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'win-x64-single.pubxml',
-                  onTap: () => beginDownload(context, 'win-x64-single.pubxml'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Windows ${'Bits_32'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'win-x86-single.pubxml',
-                  onTap: () => beginDownload(context, 'win-x86-single.pubxml'),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: tilesPadding),
-          StandardPlatformItem(
-            title: 'GNU/Linux',
-            subTitle: 'Download_Tested'.tr.replaceAll(
-                  '%content%',
-                  'Ubuntu 20.04+, Deepin ...',
-                ),
-            leading: const Icon(CommunityMaterialIcons.linux),
-            onTap: () => showItemsDialog(
-              context,
-              [
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Linux ${'Bits_64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'linux-x64-single.pubxml',
-                  onTap: () => beginDownload(context, 'linux-x64-single.pubxml'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Linux ${'CPU_ARM'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'linux-arm-single.pubxml',
-                  onTap: () => beginDownload(context, 'linux-arm-single.pubxml'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Linux ${'CPU_ARM64'.tr} (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'linux-arm64-single.pubxml',
-                  onTap: () => beginDownload(context, 'linux-arm64-single.pubxml'),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: tilesPadding),
-          StandardPlatformItem(
-            title: 'MacOS',
-            subTitle: 'Download_Tested'.tr.replaceAll(
-                  '%content%',
-                  'MacOS Monterey',
-                ),
-            leading: const Icon(CommunityMaterialIcons.apple),
-            onTap: () => showItemsDialog(
-              context,
-              [
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'MacOS ${'Bits_64'.tr} (${'CPU_Apple'.tr}) (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'osx-arm64-single.pubxml',
-                  onTap: () => beginDownload(context, 'osx-arm64-single.pubxml'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'MacOS ${'Bits_64'.tr} (${'CPU_Intel'.tr}) (${'With_Runtime'.tr.replaceAll('%runtime%', 'dotnet 6')})',
-                      ),
-                  subTitle: 'osx-x64-single.pubxml',
-                  onTap: () => beginDownload(context, 'osx-x64-single.pubxml'),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: tilesPadding),
-          StandardPlatformItem(
-            title: 'Android',
-            subTitle: 'Download_Supported'.tr.replaceAll(
-                  '%content%',
-                  'Android 5.0+',
-                ),
-            leading: const Icon(CommunityMaterialIcons.android),
-            onTap: () => showItemsDialog(
-              context,
-              [
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Android (${'MultiArchSupport'.tr})',
-                      ),
-                  subTitle: 'kitx-mobile-release.apk',
-                  onTap: () => beginDownload(context, 'kitx-mobile-release.apk'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Android ${'CPU_ARM64'.tr} (ABIv8)',
-                      ),
-                  subTitle: 'kitx-mobile-arm64-v8a-release.apk',
-                  onTap: () => beginDownload(context, 'kitx-mobile-arm64-v8a-release.apk'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Android ${'CPU_ARM'.tr} (ABIv7)',
-                      ),
-                  subTitle: 'kitx-mobile-armeabi-v7a-release.apk',
-                  onTap: () => beginDownload(context, 'kitx-mobile-armeabi-v7a-release.apk'),
-                ),
-                SizedBox(height: tilesPadding),
-                StandardDownloadItem(
-                  title: 'Download_ApplyTo'.tr.replaceAll(
-                        '%content%',
-                        'Android ${'CPU_x86_64'.tr}',
-                      ),
-                  subTitle: 'kitx-mobile-x86_64-release.apk',
-                  onTap: () => beginDownload(context, 'kitx-mobile-x86_64-release.apk'),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: tilesPadding),
-          StandardPlatformItem(
-            enabled: false,
-            title: 'iOS',
-            subTitle: 'Download_NoTest'.tr,
-            leading: const Icon(CommunityMaterialIcons.apple_ios),
-            onTap: () {},
-          ),
-        ],
       ),
     ],
   );
