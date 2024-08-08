@@ -10,4 +10,4 @@ Visit KitX Website at https://kitx.apps.crequency.com
 
 We use flutter for website frontend.
 
-You can visit https://kitx-website.pages.dev to preview the developing website
+You can visit https://crequency.github.io/KitX-Website/ to preview the developing website
