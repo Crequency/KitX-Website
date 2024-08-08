@@ -18,37 +18,30 @@ void downloadFile(String url) {
 void beginDownload(BuildContext context, String id) {
   Get.back();
 
-  var latestVersion = 'v3.23.04.6488';
-
-  var baseUrl = 'https://source.catrol.cn/download/apps/kitx';
-
   if (id.contains('.pubxml')) id = id.replaceAll('.pubxml', '');
 
-  var url = '$baseUrl/desktop/$latestVersion/kitx-$id.7z';
-
-  var canDownload = false;
-
-  if (id.startsWith('win')) {
-    url = url.replaceAll('desktop', 'win');
-    canDownload = true;
-  }
-
-  if (id.startsWith('osx')) {
-    url = url.replaceAll('desktop', 'osx');
-    canDownload = true;
-  }
-
-  if (id.startsWith('linux')) {
-    url = url.replaceAll('desktop', 'linux');
-    canDownload = true;
-  }
+  var fileName = 'kitx-$id.7z';
 
   if (id.endsWith('apk')) {
-    url = '$baseUrl/android/$latestVersion/$id';
-    canDownload = true;
+    fileName = id;
   }
 
-  if (canDownload) downloadFile(url);
+  var url = '';
+
+  switch (downloadSource.value) {
+    case 'GitHub':
+      url = 'https://github.com/Crequency/KitX/releases/latest/download/$fileName';
+      break;
+    case 'Gitee':
+      // ToDo: Add Gitee download source
+      break;
+    case 'Crequency':
+      var source = 'https://dl.catrol.cn/kitx';
+      url = '$source/latest/$fileName';
+      break;
+  }
+
+  downloadFile(url);
 }
 
 void showItemsDialog(BuildContext context, List<Widget> items) {
@@ -280,10 +273,12 @@ Widget getDownloadList(BuildContext context) {
                           child: const Text('GitHub'),
                           value: 'GitHub',
                         ),
-                        const DropdownMenuItem(
-                          child: const Text('Gitee'),
-                          value: 'Gitee',
-                        ),
+                        // ToDo: Add Gitee download source
+
+                        // const DropdownMenuItem(
+                        //   child: const Text('Gitee'),
+                        //   value: 'Gitee',
+                        // ),
                         const DropdownMenuItem(
                           child: const Text('Crequency'),
                           value: 'Crequency',
