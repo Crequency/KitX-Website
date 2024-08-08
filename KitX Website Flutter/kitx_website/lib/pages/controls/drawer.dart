@@ -7,6 +7,11 @@ import 'package:kitx_website/utils/open_link.dart';
 class AppDrawer extends StatelessWidget {
   final pageOpenDelay = 200;
 
+  void navigateTo(int pageNumber) {
+    Get.back();
+    app.navPageTo(pageNumber);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,12 +22,12 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: Text('Home_Page'.tr),
-            onTap: () => app.navPageTo(0),
+            onTap: () => navigateTo(0),
           ),
           ListTile(
             leading: const Icon(CommunityMaterialIcons.cube),
             title: Text('Plugins_Page'.tr),
-            onTap: () => app.navPageTo(1),
+            onTap: () => navigateTo(1),
           ),
           // ListTile(
           //   leading: const Icon(CommunityMaterialIcons.file_document),
@@ -32,12 +37,12 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.timeline),
             title: Text('Milestones_Page'.tr),
-            onTap: () => app.navPageTo(2),
+            onTap: () => navigateTo(2),
           ),
           ListTile(
             leading: const Icon(Icons.settings),
             title: Text('Settings_Page'.tr),
-            onTap: () => app.navPageTo(3),
+            onTap: () => navigateTo(3),
           ),
           Divider(),
           ListTile(
