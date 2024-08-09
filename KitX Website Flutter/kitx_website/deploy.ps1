@@ -2,7 +2,7 @@
 flutter clean
 
 ## Build with web profile
-flutter build web --release --web-renderer canvaskit --tree-shake-icons --no-web-resources-cdn
+flutter build web --release --web-renderer canvaskit --no-tree-shake-icons --no-web-resources-cdn
 
 ## Run optimizer to reduce the size of the built files
 # flutter pub run flutter_web_optimizer optimize --asset-base https://kitx.apps.catrol.cn/
@@ -15,15 +15,17 @@ Move-Item dist ../../
 
 Set-Location ../../
 
-git add dist
+tar -cf dist.tar dist
+
+Remove-Item -r dist
+
+git add dist.tar
 
 git stash
 
-Remove-Item -r dist
-
 git checkout deploy
 
-Remove-Item -r dist
+Remove-Item dist.tar
 
 git add .
 
@@ -39,7 +41,12 @@ git push
 
 git checkout dev=main
 
-ssh catrol@catrol.cn -t "cd /opt/1panel/apps/openresty/openresty/www/sites/kitx.apps.catrol.cn/index; sudo git checkout deploy; sudo git pull"
+Write-Output ""
+Write-Output "Press any key to update server ..."
+
+[void][System.Console]::ReadKey($true)
+
+ssh catrol@catrol.cn -t "cd /opt/1panel/apps/openresty/openresty/www/sites/kitx.apps.catrol.cn/index; sudo git checkout deploy; sudo git pull; sudo tar -xf dist.tar"
 
 Write-Output ""
 Write-Output "Press any key to continue ..."
