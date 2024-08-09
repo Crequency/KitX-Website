@@ -4,15 +4,21 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
+import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
 
 var downloadSource = 'GitHub'.obs;
 
 void downloadFile(String url) {
-  AnchorElement(href: url)
-    ..download = url
-    ..click();
+  Future.delayed(
+    Duration.zero,
+    () {
+      AnchorElement(href: url)
+        ..download = url
+        ..click();
+    },
+  );
 }
 
 void beginDownload(BuildContext context, String id) {
@@ -64,6 +70,8 @@ void showItemsDialog(BuildContext context, List<Widget> items) {
   );
 }
 
+var backToHome = () {};
+
 Widget getDownloadList(BuildContext context) {
   var runtimes = ['dotnet 8'];
 
@@ -73,42 +81,159 @@ Widget getDownloadList(BuildContext context) {
 
   const hideIconColor = true;
 
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      InkWell(
-        borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
-        splashColor: context.iconColor?.withOpacity(0.3),
-        onTap: () {},
-        child: const Image(
-          width: heroIconSize,
-          height: heroIconSize,
-          alignment: Alignment.center,
-          image: const AssetImage('assets/KitX-Icon-192x-margin-2x.png'),
-          fit: BoxFit.fitWidth,
+  var pageController = PageController();
+
+  var index = 0.obs;
+
+  var navigateTo = (int x) {
+    if (x != 0) index.value = x;
+
+    pageController.animateToPage(
+      x > 0 ? 1 : 0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOutCubic,
+    );
+  };
+
+  backToHome = () => navigateTo(0);
+
+  var sourceSwitcher = Padding(
+    padding: EdgeInsets.only(top: tilesPadding),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Download_SelectDownloadSource'.tr),
+        const SizedBox(width: 20),
+        Container(
+          width: 120,
+          child: Obx(
+            () => DropdownButton<String>(
+              value: downloadSource.value,
+              icon: const Icon(Icons.arrow_downward),
+              isExpanded: true,
+              onChanged: (String? value) {
+                if (value == null) return;
+
+                downloadSource.value = value;
+              },
+              items: const [
+                const DropdownMenuItem(
+                  child: const Text('GitHub'),
+                  value: 'GitHub',
+                ),
+                // ToDo: Add Gitee download source
+
+                // const DropdownMenuItem(
+                //   child: const Text('Gitee'),
+                //   value: 'Gitee',
+                // ),
+                const DropdownMenuItem(
+                  child: const Text('Crequency'),
+                  value: 'Crequency',
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
-      const Column(
+      ],
+    ),
+  );
+
+  return PageView(
+    controller: pageController,
+    physics: const NeverScrollableScrollPhysics(),
+    scrollDirection: Axis.horizontal,
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('KitX', style: const TextStyle(fontSize: 46)),
-          const Text('v3.23.04'),
+          InkWell(
+            borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
+            splashColor: context.iconColor?.withOpacity(0.3),
+            onTap: () {},
+            child: const Image(
+              width: heroIconSize,
+              height: heroIconSize,
+              alignment: Alignment.center,
+              image: const AssetImage('assets/KitX-Icon-192x-margin-2x.png'),
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+          const Column(
+            children: [
+              const Text('KitX', style: const TextStyle(fontSize: 46)),
+              const Text('v3.23.04'),
+            ],
+          ),
+          const SizedBox(height: 15),
+          const Divider(),
+          const SizedBox(height: 15),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                standardPlatformItem(
+                  title: 'Windows',
+                  subTitle: 'Download_Supported'.trParams({'content': 'Windows 10/11'}),
+                  // ignore: dead_code
+                  leading: const Icon(CommunityMaterialIcons.microsoft_windows, color: hideIconColor ? null : Colors.blue),
+                  onTap: () => navigateTo(1),
+                ),
+                const SizedBox(height: tilesPadding),
+                standardPlatformItem(
+                  title: 'GNU/Linux',
+                  subTitle: 'Download_Tested'.trParams({'content': 'Ubuntu 20.04+, Deepin ...'}),
+                  // ignore: dead_code
+                  leading: const Icon(CommunityMaterialIcons.linux, color: hideIconColor ? null : Colors.amberAccent),
+                  onTap: () => navigateTo(2),
+                ),
+                const SizedBox(height: tilesPadding),
+                standardPlatformItem(
+                  title: 'MacOS',
+                  subTitle: 'Download_Tested'.trParams({'content': 'MacOS Monterey'}),
+                  // ignore: dead_code
+                  leading: const Icon(CommunityMaterialIcons.apple, color: hideIconColor ? null : Colors.white70),
+                  onTap: () => navigateTo(3),
+                ),
+                const SizedBox(height: tilesPadding),
+                standardPlatformItem(
+                  title: 'Android',
+                  subTitle: 'Download_Supported'.trParams({
+                    'content': 'Android 5.0+',
+                  }),
+                  // ignore: dead_code
+                  leading: const Icon(CommunityMaterialIcons.android, color: hideIconColor ? null : Colors.greenAccent),
+                  onTap: () => navigateTo(4),
+                ),
+                const SizedBox(height: tilesPadding),
+                standardPlatformItem(
+                  enabled: false,
+                  title: 'iOS',
+                  subTitle: 'Download_NoTest'.tr,
+                  leading: const Icon(CommunityMaterialIcons.apple_ios),
+                  onTap: () {},
+                ),
+                const SizedBox(height: tilesPadding),
+                listTileItem(
+                  title: 'Download_ElderVersions'.tr,
+                  subTitle: 'Download_LookingForElderVersions'.tr,
+                  leading: const Icon(CommunityMaterialIcons.view_list),
+                  trailing: const Icon(CommunityMaterialIcons.open_in_new),
+                  onTap: () => openLink('GitHubRepo_KitX_Releases'),
+                ),
+                sourceSwitcher,
+              ],
+            ),
+          ),
         ],
       ),
-      const SizedBox(height: 15),
-      const Divider(),
-      const SizedBox(height: 15),
-      Expanded(
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            standardPlatformItem(
-              title: 'Windows',
-              subTitle: 'Download_Supported'.trParams({'content': 'Windows 10/11'}),
-              // ignore: dead_code
-              leading: const Icon(CommunityMaterialIcons.microsoft_windows, color: hideIconColor ? null : Colors.blue),
-              onTap: () => showItemsDialog(
-                context,
-                [
+      Obx(
+        () {
+          switch (index.value) {
+            case 1:
+              return DownloadItemsBlock(
+                children: [
+                  const SizedBox(height: tilesPadding),
                   standardDownloadItem(
                     title: 'Download_ApplyTo'.trParams({
                       'content': 'Windows ${'Bits_64'.tr} (${'With_Runtime'.trArgs(runtimes)})',
@@ -124,18 +249,13 @@ Widget getDownloadList(BuildContext context) {
                     subTitle: 'win-x86-single.pubxml',
                     onTap: () => beginDownload(context, 'win-x86-single.pubxml'),
                   ),
+                  sourceSwitcher,
                 ],
-              ),
-            ),
-            const SizedBox(height: tilesPadding),
-            standardPlatformItem(
-              title: 'GNU/Linux',
-              subTitle: 'Download_Tested'.trParams({'content': 'Ubuntu 20.04+, Deepin ...'}),
-              // ignore: dead_code
-              leading: const Icon(CommunityMaterialIcons.linux, color: hideIconColor ? null : Colors.amberAccent),
-              onTap: () => showItemsDialog(
-                context,
-                [
+              );
+            case 2:
+              return DownloadItemsBlock(
+                children: [
+                  const SizedBox(height: tilesPadding),
                   standardDownloadItem(
                     title: 'Download_ApplyTo'.trParams({
                       'content': 'Linux ${'Bits_64'.tr} (${'With_Runtime'.trArgs(runtimes)})',
@@ -159,18 +279,13 @@ Widget getDownloadList(BuildContext context) {
                     subTitle: 'linux-arm64-single.pubxml',
                     onTap: () => beginDownload(context, 'linux-arm64-single.pubxml'),
                   ),
+                  sourceSwitcher,
                 ],
-              ),
-            ),
-            const SizedBox(height: tilesPadding),
-            standardPlatformItem(
-              title: 'MacOS',
-              subTitle: 'Download_Tested'.trParams({'content': 'MacOS Monterey'}),
-              // ignore: dead_code
-              leading: const Icon(CommunityMaterialIcons.apple, color: hideIconColor ? null : Colors.white70),
-              onTap: () => showItemsDialog(
-                context,
-                [
+              );
+            case 3:
+              return DownloadItemsBlock(
+                children: [
+                  const SizedBox(height: tilesPadding),
                   standardDownloadItem(
                     title: 'Download_ApplyTo'.trParams({
                       'content': 'MacOS ${'Bits_64'.tr} (${'CPU_Apple'.tr}) (${'With_Runtime'.trArgs(runtimes)})',
@@ -186,20 +301,13 @@ Widget getDownloadList(BuildContext context) {
                     subTitle: 'osx-x64-single.pubxml',
                     onTap: () => beginDownload(context, 'osx-x64-single.pubxml'),
                   ),
+                  sourceSwitcher,
                 ],
-              ),
-            ),
-            const SizedBox(height: tilesPadding),
-            standardPlatformItem(
-              title: 'Android',
-              subTitle: 'Download_Supported'.trParams({
-                'content': 'Android 5.0+',
-              }),
-              // ignore: dead_code
-              leading: const Icon(CommunityMaterialIcons.android, color: hideIconColor ? null : Colors.greenAccent),
-              onTap: () => showItemsDialog(
-                context,
-                [
+              );
+            case 4:
+              return DownloadItemsBlock(
+                children: [
+                  const SizedBox(height: tilesPadding),
                   standardDownloadItem(
                     title: 'Download_ApplyTo'.trParams({
                       'content': 'Android (${'MultiArchSupport'.tr})',
@@ -231,66 +339,17 @@ Widget getDownloadList(BuildContext context) {
                     subTitle: 'kitx-mobile-x86_64-release.apk',
                     onTap: () => beginDownload(context, 'kitx-mobile-x86_64-release.apk'),
                   ),
+                  sourceSwitcher,
                 ],
-              ),
-            ),
-            const SizedBox(height: tilesPadding),
-            standardPlatformItem(
-              enabled: false,
-              title: 'iOS',
-              subTitle: 'Download_NoTest'.tr,
-              leading: const Icon(CommunityMaterialIcons.apple_ios),
-              onTap: () {},
-            ),
-            const SizedBox(height: tilesPadding),
-            listTileItem(
-              title: 'Download_ElderVersions'.tr,
-              subTitle: 'Download_LookingForElderVersions'.tr,
-              leading: const Icon(CommunityMaterialIcons.view_list),
-              trailing: const Icon(CommunityMaterialIcons.open_in_new),
-              onTap: () => openLink('GitHubRepo_KitX_Releases'),
-            ),
-            const SizedBox(height: tilesPadding),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Download_SelectDownloadSource'.tr),
-                const SizedBox(width: 20),
-                Container(
-                  width: 120,
-                  child: Obx(
-                    () => DropdownButton<String>(
-                      value: downloadSource.value,
-                      icon: const Icon(Icons.arrow_downward),
-                      isExpanded: true,
-                      onChanged: (String? value) {
-                        if (value == null) return;
+              );
+            case 5:
+              return DownloadItemsBlock(
+                children: [],
+              );
+          }
 
-                        downloadSource.value = value;
-                      },
-                      items: const [
-                        const DropdownMenuItem(
-                          child: const Text('GitHub'),
-                          value: 'GitHub',
-                        ),
-                        // ToDo: Add Gitee download source
-
-                        // const DropdownMenuItem(
-                        //   child: const Text('Gitee'),
-                        //   value: 'Gitee',
-                        // ),
-                        const DropdownMenuItem(
-                          child: const Text('Crequency'),
-                          value: 'Crequency',
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          return DownloadItemsBlock(children: []);
+        },
       ),
     ],
   );
