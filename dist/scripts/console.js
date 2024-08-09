@@ -23,6 +23,6 @@ const badge = (title, version, leftBackground = "#606060", rightBackground = "#4
     console.log("%c " + title + " %c " + version + " ", padLeftStyle, padRightStyle);
 }
 
-badge("KitX Website", "v1.0.0");
+badge("KitX Website", "v1.2.2");
 
 hello();
