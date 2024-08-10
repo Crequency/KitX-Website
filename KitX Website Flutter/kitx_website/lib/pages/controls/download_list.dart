@@ -97,45 +97,77 @@ Widget getDownloadList(BuildContext context) {
 
   backToHome = () => navigateTo(0);
 
+  var downloadSourceController = TextEditingController();
+
+  downloadSourceController.addListener(() {
+    var text = downloadSourceController.text;
+    var available = ['GitHub', 'Crequency'];
+    var valid = false;
+
+    for (var element in available) {
+      if (element.startsWith(text)) {
+        valid = true;
+        downloadSourceController.text = element;
+        continue;
+      }
+    }
+
+    if (valid == false) {
+      downloadSourceController.text = 'GitHub';
+    }
+  });
+
   var sourceSwitcher = Padding(
     padding: EdgeInsets.only(top: tilesPadding),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Download_SelectDownloadSource'.tr),
-        const SizedBox(width: 20),
-        Container(
-          width: 120,
-          child: Obx(
-            () => DropdownButton<String>(
-              value: downloadSource.value,
-              icon: const Icon(Icons.arrow_downward),
-              isExpanded: true,
-              onChanged: (String? value) {
-                if (value == null) return;
-
-                downloadSource.value = value;
-              },
-              items: const [
-                const DropdownMenuItem(
-                  child: const Text('GitHub'),
-                  value: 'GitHub',
-                ),
-                // ToDo: Add Gitee download source
-
-                // const DropdownMenuItem(
-                //   child: const Text('Gitee'),
-                //   value: 'Gitee',
-                // ),
-                const DropdownMenuItem(
-                  child: const Text('Crequency'),
-                  value: 'Crequency',
-                ),
+    child: Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Download_SelectDownloadSource'.tr),
+          const SizedBox(width: 20),
+          Obx(
+            () => DropdownMenu(
+              initialSelection: downloadSource.value,
+              leadingIcon: const Icon(Icons.cloud_download_rounded),
+              controller: downloadSourceController,
+              enableFilter: false,
+              enableSearch: false,
+              //   inputDecorationTheme: const InputDecorationTheme(filled: true),
+              onSelected: (value) => downloadSource.value = value!,
+              dropdownMenuEntries: [
+                DropdownMenuEntry(value: 'GitHub', label: 'GitHub'),
+                DropdownMenuEntry(value: 'Crequency', label: 'Crequency'),
               ],
             ),
+            // DropdownButton<String>(
+            //   value: downloadSource.value,
+            //   icon: const Icon(Icons.arrow_downward),
+            //   isExpanded: true,
+            //   onChanged: (String? value) {
+            //     if (value == null) return;
+
+            //     downloadSource.value = value;
+            //   },
+            //   items: const [
+            //     const DropdownMenuItem(
+            //       child: const Text('GitHub'),
+            //       value: 'GitHub',
+            //     ),
+            //     // ToDo: Add Gitee download source
+
+            //     // const DropdownMenuItem(
+            //     //   child: const Text('Gitee'),
+            //     //   value: 'Gitee',
+            //     // ),
+            //     const DropdownMenuItem(
+            //       child: const Text('Crequency'),
+            //       value: 'Crequency',
+            //     ),
+            //   ],
+            // ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 
@@ -221,7 +253,7 @@ Widget getDownloadList(BuildContext context) {
                   trailing: const Icon(CommunityMaterialIcons.open_in_new),
                   onTap: () => openLink('GitHubRepo_KitX_Releases'),
                 ),
-                sourceSwitcher,
+                // sourceSwitcher,
               ],
             ),
           ),
