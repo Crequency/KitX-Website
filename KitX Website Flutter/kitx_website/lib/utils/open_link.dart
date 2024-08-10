@@ -10,6 +10,7 @@ var links = [
   ['GitHubRepo_KitX-Website', 'https://github.com/Crequency/KitX-Website'],
   ['Docs_KitX', 'https://kitx.docs.catrol.cn/'],
   ['Home_Page', 'https://kitx.apps.catrol.cn/'],
+  ['F-Droid-KitX-Mobile', 'https://f-droid.org/packages/com.crequency.kitx.mobile/']
 ];
 
 void openLink(String key, {bool delay = true}) {

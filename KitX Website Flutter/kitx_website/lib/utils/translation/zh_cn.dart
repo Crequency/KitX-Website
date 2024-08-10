@@ -1,6 +1,7 @@
 ﻿// ignore: constant_identifier_names
 const Map<String, String> zh_CN = {
   'Public_Docs': '文档',
+  'Public_Recommended': '推荐',
   'Home_Page': '主页',
   'Plugins_Page': '插件',
   'Docs_Page': '文档',
@@ -25,4 +26,6 @@ const Map<String, String> zh_CN = {
   'CPU_Apple': 'Apple 芯片',
   'With_Runtime': '包含 %s 运行时',
   'MultiArchSupport': '包含多个架构支持',
+  'Get-on-F-Droid': '在 F-Droid 上获取',
+  'Get-on-F-Droid-Details': '您可以在 F-Droid 上获取并保持最新',
 };

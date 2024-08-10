@@ -44,6 +44,7 @@ Widget standardDownloadItem({
   bool? enabled,
   String? title,
   required (String?, Widget?) subTitle,
+  Widget? leading,
   Widget? trailing,
   void Function()? onTap,
   bool showBadge = false,
@@ -55,7 +56,7 @@ Widget standardDownloadItem({
     title: title,
     subTitle: subTitle,
     shape: tileRadius,
-    leading: null,
+    leading: leading,
     trailing: trailing ?? const Icon(Icons.download),
     onTap: onTap,
   );

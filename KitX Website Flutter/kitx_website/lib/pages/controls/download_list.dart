@@ -7,6 +7,7 @@ import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
+import 'package:websafe_svg/websafe_svg.dart';
 
 var downloadSource = 'GitHub'.obs;
 
@@ -173,6 +174,11 @@ Widget getDownloadList(BuildContext context) {
     ),
   );
 
+  var recommendedChip = Chip(
+    avatar: const Icon(Icons.recommend_rounded),
+    label: Text('Public_Recommended'.tr),
+  );
+
   return PageView(
     controller: pageController,
     physics: const NeverScrollableScrollPhysics(),
@@ -269,9 +275,22 @@ Widget getDownloadList(BuildContext context) {
           switch (index.value) {
             case 1:
               return DownloadItemsBlock(
-                trailing: Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: const Icon(CommunityMaterialIcons.microsoft_windows, color: Colors.blue),
+                trailing: ElevatedButton.icon(
+                  onPressed: null,
+                  icon: const Icon(CommunityMaterialIcons.microsoft_windows, color: Colors.white),
+                  label: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    child: Text('Windows', style: TextStyle(color: Colors.white)),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.blue),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: Colors.blue),
+                      ),
+                    ),
+                  ),
                 ),
                 children: [
                   const SizedBox(height: tilesPadding),
@@ -290,6 +309,7 @@ Widget getDownloadList(BuildContext context) {
                             spacing: 10,
                             runSpacing: 10,
                             children: [
+                              recommendedChip,
                               Chip(label: Text('Bits_64'.tr)),
                               Chip(label: Text('With_Runtime'.trArgs(runtimes))),
                             ],
@@ -331,9 +351,22 @@ Widget getDownloadList(BuildContext context) {
               );
             case 2:
               return DownloadItemsBlock(
-                trailing: Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: const Icon(CommunityMaterialIcons.linux, color: Colors.amberAccent),
+                trailing: ElevatedButton.icon(
+                  onPressed: null,
+                  icon: const Icon(CommunityMaterialIcons.linux, color: Colors.white),
+                  label: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    child: Text('GNU/Linux', style: TextStyle(color: Colors.white)),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.amber),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: Colors.amber),
+                      ),
+                    ),
+                  ),
                 ),
                 children: [
                   const SizedBox(height: tilesPadding),
@@ -419,9 +452,22 @@ Widget getDownloadList(BuildContext context) {
               );
             case 3:
               return DownloadItemsBlock(
-                trailing: Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: const Icon(CommunityMaterialIcons.apple, color: Colors.white70),
+                trailing: ElevatedButton.icon(
+                  onPressed: null,
+                  icon: const Icon(CommunityMaterialIcons.apple, color: Colors.white),
+                  label: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    child: Text('MacOS', style: TextStyle(color: Colors.white)),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.black87),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: Colors.black87),
+                      ),
+                    ),
+                  ),
                 ),
                 children: [
                   const SizedBox(height: tilesPadding),
@@ -483,17 +529,73 @@ Widget getDownloadList(BuildContext context) {
               );
             case 4:
               return DownloadItemsBlock(
-                trailing: Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: const Icon(CommunityMaterialIcons.android, color: Colors.greenAccent),
+                trailing: ElevatedButton.icon(
+                  onPressed: null,
+                  icon: const Icon(CommunityMaterialIcons.android, color: Colors.white),
+                  label: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    child: Text('Android', style: TextStyle(color: Colors.white)),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.green),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: Colors.green),
+                      ),
+                    ),
+                  ),
                 ),
                 children: [
+                  const SizedBox(height: tilesPadding),
+                  standardDownloadItem(
+                    title: 'Get-on-F-Droid'.tr,
+                    subTitle: (
+                      null,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Get-on-F-Droid-Details'.tr),
+                          const SizedBox(height: tilesPadding),
+                          Wrap(
+                            spacing: 10,
+                            runSpacing: 10,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(2),
+                                child: WebsafeSvg.asset('ThirdParty/fdroid-logo.svg', height: 30.0),
+                              ),
+                              recommendedChip,
+                            ],
+                          ),
+                          const SizedBox(height: downloadItemTileBottomPadding),
+                        ],
+                      )
+                    ),
+                    trailing: const Icon(CommunityMaterialIcons.open_in_new),
+                    onTap: () => openLink('F-Droid-KitX-Mobile'),
+                  ),
                   const SizedBox(height: tilesPadding),
                   standardDownloadItem(
                     title: 'Download_ApplyTo'.trParams({
                       'content': 'Android (${'MultiArchSupport'.tr})',
                     }),
-                    subTitle: ('kitx-mobile-release.apk', null),
+                    subTitle: (
+                      null,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('kitx-mobile-release.apk'),
+                          const SizedBox(height: tilesPadding),
+                          Wrap(
+                            spacing: 10,
+                            runSpacing: 10,
+                            children: [recommendedChip],
+                          ),
+                          const SizedBox(height: downloadItemTileBottomPadding),
+                        ],
+                      )
+                    ),
                     onTap: () => beginDownload(context, 'kitx-mobile-release.apk'),
                   ),
                   const SizedBox(height: tilesPadding),
@@ -582,7 +684,9 @@ Widget getDownloadList(BuildContext context) {
                   padding: EdgeInsets.only(right: 5),
                   child: const Icon(CommunityMaterialIcons.apple_ios),
                 ),
-                children: [],
+                children: [
+                  sourceSwitcher,
+                ],
               );
           }
 

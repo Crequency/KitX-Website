@@ -1,6 +1,7 @@
 ﻿// ignore: constant_identifier_names
 const Map<String, String> en_US = {
   'Public_Docs': 'Docs',
+  'Public_Recommended': 'Recommended',
   'Home_Page': 'Home',
   'Plugins_Page': 'Plugins',
   'Docs_Page': 'Docs',
@@ -25,4 +26,6 @@ const Map<String, String> en_US = {
   'CPU_Apple': 'Apple CPU',
   'With_Runtime': 'with %s runtime',
   'MultiArchSupport': 'Support multi architectures',
+  'Get-on-F-Droid': 'Get on F-Droid',
+  'Get-on-F-Droid-Details': 'You can get this on F-Droid and keep updating',
 };

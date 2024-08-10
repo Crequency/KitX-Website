@@ -24,21 +24,30 @@ class _DownloadItemsBlockState extends State<DownloadItemsBlock> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    var pageBar = Row(
       children: [
-        Row(
-          children: [
-            TooltipVisibility(
-              visible: false,
-              child: BackButton(
-                onPressed: backToHome,
-              ),
-            ),
-            const Expanded(child: const SizedBox()),
-            widget.trailing ?? const SizedBox(),
-          ],
+        TooltipVisibility(
+          visible: false,
+          child: BackButton(
+            onPressed: backToHome,
+          ),
         ),
-      ]..addAll(widget.children),
+        const Expanded(child: const SizedBox()),
+        widget.trailing ?? const SizedBox(),
+      ],
+    );
+
+    return Stack(
+      children: [
+        ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: Container(
+            margin: EdgeInsets.only(top: 40.0),
+            child: ListView(children: widget.children),
+          ),
+        ),
+        pageBar,
+      ],
     );
   }
 }
