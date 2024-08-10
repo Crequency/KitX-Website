@@ -2,9 +2,15 @@
 import 'package:kitx_website/pages/controls/download_list.dart';
 
 class DownloadItemsBlock extends StatefulWidget {
-  const DownloadItemsBlock({super.key, required this.children});
+  const DownloadItemsBlock({
+    super.key,
+    required this.children,
+    this.trailing,
+  });
 
   final List<Widget> children;
+
+  final Widget? trailing;
 
   @override
   _DownloadItemsBlockState createState() => _DownloadItemsBlockState();
@@ -28,6 +34,8 @@ class _DownloadItemsBlockState extends State<DownloadItemsBlock> {
                 onPressed: backToHome,
               ),
             ),
+            const Expanded(child: const SizedBox()),
+            widget.trailing ?? const SizedBox(),
           ],
         ),
       ]..addAll(widget.children),

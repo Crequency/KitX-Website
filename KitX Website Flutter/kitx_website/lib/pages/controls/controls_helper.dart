@@ -5,7 +5,7 @@ var tileRadius = ContinuousRectangleBorder(borderRadius: BorderRadius.circular(1
 Widget listTileItem({
   bool? enabled,
   String? title,
-  String? subTitle,
+  required (String?, Widget?) subTitle,
   ShapeBorder? shape,
   Widget? leading,
   Widget? trailing,
@@ -14,7 +14,7 @@ Widget listTileItem({
   return ListTile(
     enabled: enabled ?? true,
     title: Text(title!),
-    subtitle: Text(subTitle!),
+    subtitle: subTitle.$1 == null ? subTitle.$2 : Text(subTitle.$1!),
     shape: shape ?? tileRadius,
     leading: leading,
     trailing: trailing,
@@ -25,7 +25,7 @@ Widget listTileItem({
 Widget standardPlatformItem({
   bool? enabled,
   String? title,
-  String? subTitle,
+  required (String?, Widget?) subTitle,
   Widget? leading,
   void Function()? onTap,
 }) {
@@ -43,11 +43,14 @@ Widget standardPlatformItem({
 Widget standardDownloadItem({
   bool? enabled,
   String? title,
-  String? subTitle,
+  required (String?, Widget?) subTitle,
   Widget? trailing,
   void Function()? onTap,
+  bool showBadge = false,
+  Widget? badgeLabel,
+  Offset? badgeOffset,
 }) {
-  return listTileItem(
+  var content = listTileItem(
     enabled: enabled ?? true,
     title: title,
     subTitle: subTitle,
@@ -56,4 +59,12 @@ Widget standardDownloadItem({
     trailing: trailing ?? const Icon(Icons.download),
     onTap: onTap,
   );
+
+  return showBadge
+      ? Badge(
+          child: content,
+          label: badgeLabel,
+          offset: badgeOffset,
+        )
+      : content;
 }
