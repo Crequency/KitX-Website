@@ -24,13 +24,14 @@ jobs:
               run: flutter pub get
             - name: Build
               working-directory: "KitX Website Flutter/kitx_website"
-              run: flutter build web --base-href "/KitX-Website/"
+              shell: pwsh
+              run: "& build.ps1 -baseHref /KitX-Website/"
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
               with:
-                github_token: ${{ secrets.GITHUBTOKEN }}
-                publish_dir: "./KitX Website Flutter/kitx_website/build/web"
-                force_orphan: true
-                user_name: 'github-ci[bot]'
-                user_email: 'github-actions[bot]@users.noreply.github.com'
-                commit_message: 'Publish to gh-pages'
+                  github_token: ${{ secrets.GITHUBTOKEN }}
+                  publish_dir: "./KitX Website Flutter/kitx_website/build/web"
+                  force_orphan: true
+                  user_name: "github-ci[bot]"
+                  user_email: "github-actions[bot]@users.noreply.github.com"
+                  commit_message: "Publish to gh-pages"
