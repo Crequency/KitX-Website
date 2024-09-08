@@ -48,6 +48,16 @@ void beginDownload(BuildContext context, String id) {
       break;
   }
 
+  Get.snackbar(
+    'Download_Begin'.tr,
+    url,
+    icon: const Icon(Icons.download),
+    shouldIconPulse: true,
+    snackPosition: SnackPosition.BOTTOM,
+    duration: const Duration(seconds: 3),
+    margin: EdgeInsets.all(30),
+  );
+
   downloadFile(url);
 }
 

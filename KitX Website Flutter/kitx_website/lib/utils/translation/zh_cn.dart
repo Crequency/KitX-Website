@@ -14,6 +14,7 @@ const Map<String, String> zh_CN = {
   'Download_ElderVersions': '旧版本 (KitX 1/2)',
   'Download_LookingForElderVersions': '是否正在寻找旧的版本 ? (不受支持)',
   'Download_SelectDownloadSource': '选择下载源: ',
+  'Download_Begin': '开始下载',
   'Bits_32': '32 位',
   'Bits_64': '64 位',
   'CPU_Bits_32': '32 位处理器',

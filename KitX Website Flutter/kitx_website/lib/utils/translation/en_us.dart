@@ -14,6 +14,7 @@ const Map<String, String> en_US = {
   'Download_ElderVersions': 'Elder Versions (KitX 1/2)',
   'Download_LookingForElderVersions': 'Looking for elder versions ? (Not recommend)',
   'Download_SelectDownloadSource': 'Select download source: ',
+  'Download_Begin': 'Begin downloading',
   'Bits_32': '32 bits',
   'Bits_64': '64 bits',
   'CPU_Bits_32': '32 bits CPU',
