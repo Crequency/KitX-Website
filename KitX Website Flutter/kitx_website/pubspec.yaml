@@ -14,10 +14,13 @@ dependencies:
         sdk: flutter
     get: ^4.6.6
     loading_animation_widget: ^1.2.1
+    package_info_plus: ^8.0.2
     timelines: ^0.1.0
     websafe_svg: ^3.0.1+2
 
 dev_dependencies:
+    build: ^2.4.1
+    build_runner: ^2.4.12
     flutter_lints: ^4.0.0
     flutter_test:
         sdk: flutter

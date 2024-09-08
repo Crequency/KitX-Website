@@ -3,6 +3,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kitx_website/common/build/app_build_timestamp.g.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/pages/controls/download_pages/platform_android.dart';
@@ -12,6 +13,7 @@ import 'package:kitx_website/pages/controls/download_pages/platform_macos.dart';
 import 'package:kitx_website/pages/controls/download_pages/platform_windows.dart';
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 var downloadSource = 'GitHub'.obs;
 
@@ -259,7 +261,105 @@ Widget getDownloadList(BuildContext context) {
                               subTitle: ('Download_LookingForElderVersions'.tr, null),
                               leading: const Icon(CommunityMaterialIcons.view_list),
                               trailing: const Icon(CommunityMaterialIcons.open_in_new),
-                              onTap: () => openLink('GitHubRepo_KitX_Releases'),
+                              onTap: () {
+                                Get.back();
+                                openLink('GitHubRepo_KitX_Releases');
+                              },
+                            ),
+                            const SizedBox(height: tilesPadding),
+                            listTileItem(
+                              title: 'View_AboutPage'.tr,
+                              subTitle: ('View_AboutPage_Tip'.tr, null),
+                              leading: const Icon(Icons.info),
+                              trailing: const Icon(CommunityMaterialIcons.open_in_new),
+                              onTap: () {
+                                var appName = ''.obs;
+                                var packageName = ''.obs;
+                                var version = ''.obs;
+                                var buildNumber = ''.obs;
+
+                                Future.sync(() async {
+                                  var packageInfo = await PackageInfo.fromPlatform();
+
+                                  appName.value = packageInfo.appName;
+                                  packageName.value = packageInfo.packageName;
+                                  version.value = packageInfo.version;
+                                  buildNumber.value = packageInfo.buildNumber;
+                                });
+
+                                var content = Center(
+                                  child: Container(
+                                    width: 500,
+                                    margin: EdgeInsets.all(30),
+                                    child: Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      child: Container(
+                                        margin: EdgeInsets.all(30),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              'About',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(height: 20),
+                                            Obx(
+                                              () => Text(
+                                                'App Name: ${appName.value}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Obx(
+                                              () => Text(
+                                                'Package Name: ${packageName.value}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Obx(
+                                              () => Text(
+                                                'Version: ${version.value}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Obx(
+                                              () => Text(
+                                                'Build Number: ${buildNumber.value}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              'Build timestamp: $lastAppBuildTimestamp',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+
+                                Get.back();
+                                Get.to(
+                                  () => Scaffold(
+                                    appBar: AppBar(
+                                      title: Text('About_Page'.tr),
+                                    ),
+                                    body: content,
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         );

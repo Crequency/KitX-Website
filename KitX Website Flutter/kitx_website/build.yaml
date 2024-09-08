@@ -1,0 +1,7 @@
+﻿builders:
+    package_name|appBuildTimestampGenerator:
+        import: "package:kitx_website/common/build/app_build_timestamp_generator.dart"
+        builder_factories: ["appBuildTimestampGenerator"]
+        build_extensions: { ".dart": [".my_gen.dart"] }
+        auto_apply: root_package
+        build_to: source

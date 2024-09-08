@@ -39,11 +39,6 @@ class AppDrawer extends StatelessWidget {
             title: Text('Settings_Page'.tr),
             onTap: () => navigateTo(3),
           ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: Text('About_Page'.tr),
-            onTap: () => navigateTo(4),
-          ),
           Divider(),
           ListTile(
             leading: const Icon(CommunityMaterialIcons.github),

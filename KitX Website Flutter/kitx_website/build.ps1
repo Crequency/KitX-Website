@@ -1,6 +1,9 @@
 ﻿## Clean built files
 flutter clean
 
+## Make sure custom build scripts are executed
+dart run build_runner build --delete-conflicting-outputs
+
 ## Build with web profile
 flutter build web --release --web-renderer canvaskit --no-tree-shake-icons --no-web-resources-cdn
 
