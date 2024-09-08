@@ -267,12 +267,28 @@ Widget getDownloadList(BuildContext context) {
                   onTap: () {},
                 ),
                 const SizedBox(height: tilesPadding),
-                listTileItem(
-                  title: 'Download_ElderVersions'.tr,
-                  subTitle: ('Download_LookingForElderVersions'.tr, null),
-                  leading: const Icon(CommunityMaterialIcons.view_list),
-                  trailing: const Icon(CommunityMaterialIcons.open_in_new),
-                  onTap: () => openLink('GitHubRepo_KitX_Releases'),
+                Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton.outlined(
+                      icon: const Icon(Icons.more_horiz_rounded),
+                      onPressed: () {
+                        showItemsDialog(
+                          context,
+                          [
+                            listTileItem(
+                              title: 'Download_ElderVersions'.tr,
+                              subTitle: ('Download_LookingForElderVersions'.tr, null),
+                              leading: const Icon(CommunityMaterialIcons.view_list),
+                              trailing: const Icon(CommunityMaterialIcons.open_in_new),
+                              onTap: () => openLink('GitHubRepo_KitX_Releases'),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
                 ),
                 // sourceSwitcher,
               ],
