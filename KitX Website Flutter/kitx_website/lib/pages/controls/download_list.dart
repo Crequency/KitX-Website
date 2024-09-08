@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
+import 'package:kitx_website/pages/controls/download_pages/platform_android.dart';
+import 'package:kitx_website/pages/controls/download_pages/platform_ios.dart';
+import 'package:kitx_website/pages/controls/download_pages/platform_linux.dart';
+import 'package:kitx_website/pages/controls/download_pages/platform_macos.dart';
+import 'package:kitx_website/pages/controls/download_pages/platform_windows.dart';
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 var downloadSource = 'GitHub'.obs;
 
@@ -145,39 +149,12 @@ Widget getDownloadList(BuildContext context) {
               controller: downloadSourceController,
               enableFilter: false,
               enableSearch: false,
-              //   inputDecorationTheme: const InputDecorationTheme(filled: true),
               onSelected: (value) => downloadSource.value = value!,
               dropdownMenuEntries: [
                 DropdownMenuEntry(value: 'GitHub', label: 'GitHub'),
                 DropdownMenuEntry(value: 'Crequency', label: 'Crequency'),
               ],
             ),
-            // DropdownButton<String>(
-            //   value: downloadSource.value,
-            //   icon: const Icon(Icons.arrow_downward),
-            //   isExpanded: true,
-            //   onChanged: (String? value) {
-            //     if (value == null) return;
-
-            //     downloadSource.value = value;
-            //   },
-            //   items: const [
-            //     const DropdownMenuItem(
-            //       child: const Text('GitHub'),
-            //       value: 'GitHub',
-            //     ),
-            //     // ToDo: Add Gitee download source
-
-            //     // const DropdownMenuItem(
-            //     //   child: const Text('Gitee'),
-            //     //   value: 'Gitee',
-            //     // ),
-            //     const DropdownMenuItem(
-            //       child: const Text('Crequency'),
-            //       value: 'Crequency',
-            //     ),
-            //   ],
-            // ),
           ),
         ],
       ),
@@ -300,419 +277,49 @@ Widget getDownloadList(BuildContext context) {
         () {
           switch (index.value) {
             case 1:
-              return DownloadItemsBlock(
-                trailing: ElevatedButton.icon(
-                  onPressed: null,
-                  icon: const Icon(CommunityMaterialIcons.microsoft_windows, color: Colors.white),
-                  label: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    child: Text('Windows', style: TextStyle(color: Colors.white)),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.blue),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: Colors.blue),
-                      ),
-                    ),
-                  ),
-                ),
-                children: [
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Windows ${'Bits_64'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('win-x64-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              recommendedChip,
-                              Chip(label: Text('Bits_64'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'win-x64-single.pubxml'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Windows ${'Bits_32'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('win-x86-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('Bits_32'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'win-x86-single.pubxml'),
-                  ),
-                  sourceSwitcher,
-                ],
+              return getWindowsPage(
+                context,
+                const SizedBox(height: tilesPadding),
+                const SizedBox(height: downloadItemTileBottomPadding),
+                recommendedChip,
+                sourceSwitcher,
+                runtimes,
               );
             case 2:
-              return DownloadItemsBlock(
-                trailing: ElevatedButton.icon(
-                  onPressed: null,
-                  icon: const Icon(CommunityMaterialIcons.linux, color: Colors.white),
-                  label: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    child: Text('GNU/Linux', style: TextStyle(color: Colors.white)),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.amber),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: Colors.amber),
-                      ),
-                    ),
-                  ),
-                ),
-                children: [
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Linux ${'Bits_64'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('linux-x64-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('Bits_64'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'linux-x64-single.pubxml'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Linux ${'CPU_ARM'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('linux-arm-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('CPU_ARM'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'linux-arm-single.pubxml'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Linux ${'CPU_ARM64'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('linux-arm64-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('CPU_ARM64'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'linux-arm64-single.pubxml'),
-                  ),
-                  sourceSwitcher,
-                ],
+              return getLinuxPage(
+                context,
+                const SizedBox(height: tilesPadding),
+                const SizedBox(height: downloadItemTileBottomPadding),
+                recommendedChip,
+                sourceSwitcher,
+                runtimes,
               );
             case 3:
-              return DownloadItemsBlock(
-                trailing: ElevatedButton.icon(
-                  onPressed: null,
-                  icon: const Icon(CommunityMaterialIcons.apple, color: Colors.white),
-                  label: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    child: Text('MacOS', style: TextStyle(color: Colors.white)),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.black87),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: Colors.black87),
-                      ),
-                    ),
-                  ),
-                ),
-                children: [
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'MacOS ${'Bits_64'.tr} (${'CPU_Apple'.tr})',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('osx-arm64-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('Bits_64'.tr)),
-                              Chip(label: Text('CPU_Apple'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'osx-arm64-single.pubxml'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'MacOS ${'Bits_64'.tr} (${'CPU_Intel'.tr})',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('osx-x64-single.pubxml'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('Bits_64'.tr)),
-                              Chip(label: Text('CPU_Intel'.tr)),
-                              Chip(label: Text('With_Runtime'.trArgs(runtimes))),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'osx-x64-single.pubxml'),
-                  ),
-                  sourceSwitcher,
-                ],
+              return getMacOsPage(
+                context,
+                const SizedBox(height: tilesPadding),
+                const SizedBox(height: downloadItemTileBottomPadding),
+                recommendedChip,
+                sourceSwitcher,
+                runtimes,
               );
             case 4:
-              return DownloadItemsBlock(
-                trailing: ElevatedButton.icon(
-                  onPressed: null,
-                  icon: const Icon(CommunityMaterialIcons.android, color: Colors.white),
-                  label: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    child: Text('Android', style: TextStyle(color: Colors.white)),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.green),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: Colors.green),
-                      ),
-                    ),
-                  ),
-                ),
-                children: [
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Get-on-F-Droid'.tr,
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Get-on-F-Droid-Details'.tr),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(2),
-                                child: WebsafeSvg.asset('ThirdParty/fdroid-logo.svg', height: 30.0),
-                              ),
-                              recommendedChip,
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    trailing: const Icon(CommunityMaterialIcons.open_in_new),
-                    onTap: () => openLink('F-Droid-KitX-Mobile'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Android (${'MultiArchSupport'.tr})',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('kitx-mobile-release.apk'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [recommendedChip],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'kitx-mobile-release.apk'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Android ${'CPU_ARM64'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('kitx-mobile-arm64-v8a-release.apk'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('CPU_ARM64'.tr)),
-                              Chip(label: Text('ABIv8')),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'kitx-mobile-arm64-v8a-release.apk'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Android ${'CPU_ARM'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('kitx-mobile-armeabi-v7a-release.apk'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('CPU_ARM'.tr)),
-                              Chip(label: Text('ABIv7')),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'kitx-mobile-armeabi-v7a-release.apk'),
-                  ),
-                  const SizedBox(height: tilesPadding),
-                  standardDownloadItem(
-                    title: 'Download_ApplyTo'.trParams({
-                      'content': 'Android ${'CPU_x86_64'.tr}',
-                    }),
-                    subTitle: (
-                      null,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('kitx-mobile-x86_64-release.apk'),
-                          const SizedBox(height: tilesPadding),
-                          Wrap(
-                            spacing: 10,
-                            runSpacing: 10,
-                            children: [
-                              Chip(label: Text('CPU_x86_64'.tr)),
-                            ],
-                          ),
-                          const SizedBox(height: downloadItemTileBottomPadding),
-                        ],
-                      )
-                    ),
-                    onTap: () => beginDownload(context, 'kitx-mobile-x86_64-release.apk'),
-                  ),
-                  sourceSwitcher,
-                ],
+              return getAndroidPage(
+                context,
+                const SizedBox(height: tilesPadding),
+                const SizedBox(height: downloadItemTileBottomPadding),
+                recommendedChip,
+                sourceSwitcher,
+                runtimes,
               );
             case 5:
-              return DownloadItemsBlock(
-                trailing: Padding(
-                  padding: EdgeInsets.only(right: 5),
-                  child: const Icon(CommunityMaterialIcons.apple_ios),
-                ),
-                children: [
-                  sourceSwitcher,
-                ],
+              return getIosPage(
+                context,
+                const SizedBox(height: tilesPadding),
+                const SizedBox(height: downloadItemTileBottomPadding),
+                recommendedChip,
+                sourceSwitcher,
+                runtimes,
               );
           }
 
