@@ -12,7 +12,7 @@ const Map<String, String> zh_CN = {
   'Download_NoTest': '尚未测试',
   'Download_ApplyTo': '适用于 @content',
   'Download_ElderVersions': '旧版本 (KitX 1/2)',
-  'Download_LookingForElderVersions': '是否正在寻找旧的版本 ? (不受支持)',
+  'Download_LookingForElderVersions': '是否正在寻找旧的版本 ? \n注意: 这些版本不受支持',
   'Download_SelectDownloadSource': '选择下载源: ',
   'Download_Begin': '开始下载',
   'Bits_32': '32 位',
