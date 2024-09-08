@@ -29,11 +29,6 @@ class AppDrawer extends StatelessWidget {
             title: Text('Plugins_Page'.tr),
             onTap: () => navigateTo(1),
           ),
-          // ListTile(
-          //   leading: const Icon(CommunityMaterialIcons.file_document),
-          //   title: Text('Docs_Page'.tr),
-          //   onTap: () => app.navPageTo(2),
-          // ),
           ListTile(
             leading: const Icon(Icons.timeline),
             title: Text('Milestones_Page'.tr),
@@ -43,6 +38,11 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: Text('Settings_Page'.tr),
             onTap: () => navigateTo(3),
+          ),
+          ListTile(
+            leading: const Icon(Icons.info),
+            title: Text('About_Page'.tr),
+            onTap: () => navigateTo(4),
           ),
           Divider(),
           ListTile(

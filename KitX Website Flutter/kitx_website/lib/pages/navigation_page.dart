@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kitx_website/pages/about_page.dart';
 import 'package:kitx_website/pages/controls/drawer.dart';
 import 'package:kitx_website/pages/controls/navigation_page_actions.dart';
 import 'package:kitx_website/pages/home_page.dart';
@@ -76,12 +77,6 @@ class _NavigationPageState extends State<NavigationPage> {
                         label: Text('Plugins_Page'.tr),
                         padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
-                      // NavigationRailDestination(
-                      //   icon: const Icon(Icons.account_balance),
-                      //   selectedIcon: const Icon(Icons.account_balance_outlined),
-                      //   label: Text('Docs_Page'.tr),
-                      //   padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
-                      // ),
                       NavigationRailDestination(
                         icon: const Icon(Icons.timeline),
                         selectedIcon: const Icon(Icons.timeline_outlined),
@@ -92,6 +87,12 @@ class _NavigationPageState extends State<NavigationPage> {
                         icon: const Icon(Icons.settings),
                         selectedIcon: const Icon(Icons.settings_outlined),
                         label: Text('Settings_Page'.tr),
+                        padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
+                      ),
+                      NavigationRailDestination(
+                        icon: const Icon(Icons.info),
+                        selectedIcon: const Icon(Icons.info_outline),
+                        label: Text('About_Page'.tr),
                         padding: EdgeInsets.symmetric(vertical: _buttonsPadding),
                       ),
                     ],
@@ -130,9 +131,9 @@ class _NavigationPageState extends State<NavigationPage> {
                     children: const [
                       const ClipRect(child: const HomePage()),
                       const ClipRect(child: const PluginsPage()),
-                      // const ClipRect(child: const DocsPage()),
                       const ClipRect(child: const MilestonesPage()),
                       const ClipRect(child: const SettingsPage()),
+                      const ClipRect(child: const AboutPage()),
                     ],
                     controller: _pageController,
                     physics: const NeverScrollableScrollPhysics(),
