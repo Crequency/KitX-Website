@@ -51,7 +51,7 @@ Widget getAndroidPage(
                   Padding(
                     padding: EdgeInsets.all(2),
                     child: WebsafeSvg.asset(
-                      'ThirdParty/fdroid-logo.svg',
+                      'assets/ThirdParty/fdroid-logo.svg',
                       height: 30.0,
                       placeholderBuilder: (context) => const SizedBox(
                         width: 30,
