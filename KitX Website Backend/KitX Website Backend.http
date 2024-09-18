@@ -1,0 +1,6 @@
+@KitX_Website_Backend_HostAddress = http://localhost:5022
+
+GET {{KitX_Website_Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
