@@ -1,3 +1,6 @@
+using KitX_Website_Backend.Api.Modules;
+using KitX_Website_Backend.Api.Modules.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IConnector, MongoDbConnector>();
+
+builder.Services.AddSingleton<ModulesManager>();
 
 var app = builder.Build();
 
