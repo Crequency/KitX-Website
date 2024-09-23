@@ -1,5 +1,5 @@
-using KitX_Website_Backend.Api.Modules;
-using KitX_Website_Backend.Api.Modules.DataBase;
+using KitX.Website.Backend.Api.Modules;
+using KitX.Website.Backend.Api.Modules.DataBase;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <RootNamespace>KitX_Website_Backend</RootNamespace>
+    <RootNamespace>KitX.Website.Backend.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

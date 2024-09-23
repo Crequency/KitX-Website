@@ -1,7 +1,7 @@
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace KitX_Website_Backend.Api.Modules.DataBase;
+namespace KitX.Website.Backend.Api.Modules.DataBase;
 
 public class MongoDbConnector(ILogger<IConnector> logger, string connectionString) : IConnector
 {

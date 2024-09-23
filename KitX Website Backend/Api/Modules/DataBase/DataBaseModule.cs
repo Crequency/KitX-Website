@@ -1,6 +1,6 @@
-using KitX_Website_Backend.Api.Modules.Interfaces;
+using KitX.Website.Backend.Api.Modules.Interfaces;
 
-namespace KitX_Website_Backend.Api.Modules.DataBase;
+namespace KitX.Website.Backend.Api.Modules.DataBase;
 
 public class DataBaseModule : IModule
 {

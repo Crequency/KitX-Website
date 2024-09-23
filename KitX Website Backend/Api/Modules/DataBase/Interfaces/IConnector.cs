@@ -1,4 +1,4 @@
-namespace KitX_Website_Backend.Api.Modules.DataBase;
+namespace KitX.Website.Backend.Api.Modules.DataBase;
 
 public interface IConnector
 {

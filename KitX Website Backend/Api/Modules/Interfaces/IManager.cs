@@ -1,4 +1,4 @@
-namespace KitX_Website_Backend.Api.Modules.Interfaces;
+namespace KitX.Website.Backend.Api.Modules.Interfaces;
 
 public interface IManager
 {

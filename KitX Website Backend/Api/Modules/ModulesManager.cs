@@ -1,8 +1,8 @@
-using KitX_Website_Backend.Api.Modules.DataBase;
-using KitX_Website_Backend.Api.Modules.Interfaces;
-using KitX_Website_Backend.Api.Modules.Kxp;
+using KitX.Website.Backend.Api.Modules.DataBase;
+using KitX.Website.Backend.Api.Modules.Interfaces;
+using KitX.Website.Backend.Api.Modules.Kxp;
 
-namespace KitX_Website_Backend.Api.Modules;
+namespace KitX.Website.Backend.Api.Modules;
 
 public class ModulesManager
 {

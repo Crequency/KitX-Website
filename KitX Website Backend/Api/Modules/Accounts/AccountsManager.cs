@@ -1,7 +1,7 @@
-using KitX_Website_Backend.Api.Modules.DataBase;
-using KitX_Website_Backend.Api.Modules.Interfaces;
+using KitX.Website.Backend.Api.Modules.DataBase;
+using KitX.Website.Backend.Api.Modules.Interfaces;
 
-namespace KitX_Website_Backend.Api.Modules.Accounts;
+namespace KitX.Website.Backend.Api.Modules.Accounts;
 
 public class AccountsManager : IManager
 {

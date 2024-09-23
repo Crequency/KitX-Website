@@ -1,6 +1,6 @@
-using KitX_Website_Backend.Api.Modules.Interfaces;
+using KitX.Website.Backend.Api.Modules.Interfaces;
 
-namespace KitX_Website_Backend.Api.Modules.Kxp;
+namespace KitX.Website.Backend.Api.Modules.Kxp;
 
 public class KxpModule : IModule
 {
