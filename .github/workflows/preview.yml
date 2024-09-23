@@ -4,6 +4,8 @@ on:
     push:
         branches:
             - "dev=main"
+        paths:
+            - 'KitX Website Flutter/**'
     workflow_dispatch:
 
 jobs:
