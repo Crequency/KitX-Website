@@ -139,11 +139,12 @@ Widget getDownloadList(BuildContext context) {
   var sourceSwitcher = Padding(
     padding: EdgeInsets.only(top: tilesPadding),
     child: Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Wrap(
+        spacing: 20,
+        runSpacing: 20,
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           Text('Download_SelectDownloadSource'.tr),
-          const SizedBox(width: 20),
           Obx(
             () => DropdownMenu(
               initialSelection: downloadSource.value,
