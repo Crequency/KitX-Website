@@ -31,4 +31,5 @@ const Map<String, String> zh_CN = {
   'MultiArchSupport': '包含多个架构支持',
   'Get-on-F-Droid': '在 F-Droid 上获取',
   'Get-on-F-Droid-Details': '您可以在 F-Droid 上获取并保持最新',
+  'Plugins_Title': '下载插件',
 };

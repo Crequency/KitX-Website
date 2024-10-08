@@ -31,4 +31,5 @@ const Map<String, String> en_US = {
   'MultiArchSupport': 'Support multi architectures',
   'Get-on-F-Droid': 'Get on F-Droid',
   'Get-on-F-Droid-Details': 'You can get this on F-Droid and keep updating',
+  'Plugins_Title': 'Download Plugins',
 };
