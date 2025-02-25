@@ -64,12 +64,14 @@ class _MilestonesPageState extends State<MilestonesPage> {
             return Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
-                crossAxisAlignment: isLandscape ? (index % 2 == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end) : CrossAxisAlignment.start,
+                crossAxisAlignment:
+                    isLandscape ? (index % 2 == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end) : CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Row(
-                      mainAxisAlignment: isLandscape ? (index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end) : MainAxisAlignment.start,
+                      mainAxisAlignment:
+                          isLandscape ? (index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end) : MainAxisAlignment.start,
                       children: isLandscape ? (index % 2 == 0 ? head : head.reversed.toList()) : head,
                     ),
                   ),
