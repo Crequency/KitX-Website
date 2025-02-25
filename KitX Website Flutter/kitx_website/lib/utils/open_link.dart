@@ -1,6 +1,5 @@
-﻿import 'dart:js' as js;
-
-import 'package:kitx_website/utils/global.dart';
+﻿import 'package:kitx_website/utils/global.dart';
+import 'package:web/web.dart' as web;
 
 var links = [
   ['GitHubRepo_KitX', 'https://github.com/Crequency/KitX'],
@@ -16,10 +15,10 @@ var links = [
 void openLink(String key, {bool delay = true}) {
   if (delay) {
     app.delay(
-      () => js.context.callMethod('open', [links.firstWhere((element) => element[0] == key)[1]]),
+      () => web.window.open(links.firstWhere((element) => element[0] == key)[1]),
       200,
     );
   } else {
-    js.context.callMethod('open', [links.firstWhere((element) => element[0] == key)[1]]);
+    web.window.open(links.firstWhere((element) => element[0] == key)[1]);
   }
 }

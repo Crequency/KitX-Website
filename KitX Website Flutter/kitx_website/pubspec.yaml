@@ -14,8 +14,9 @@ dependencies:
     sdk: flutter
   get: ^4.6.6
   loading_animation_widget: ^1.2.1
-  package_info_plus: ^8.0.2
-  timelines: ^0.1.0
+  package_info_plus: ^8.3.0
+  timelines_plus: ^1.0.6
+  web: ^1.1.0
   websafe_svg: ^3.0.1+2
 
 dev_dependencies:

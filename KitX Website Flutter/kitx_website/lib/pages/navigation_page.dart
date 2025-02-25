@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'package:kitx_website/pages/milestone_page.dart';
 import 'package:kitx_website/pages/plugins_page.dart';
 import 'package:kitx_website/pages/settings_page.dart';
 import 'package:kitx_website/utils/global.dart';
+import 'package:web/web.dart' as web;
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -23,13 +24,11 @@ class _NavigationPageState extends State<NavigationPage> {
   var _pageController = PageController(initialPage: 0);
 
   void checkWindowWidth() {
-    var width = window.innerWidth;
-    if (width != null) {
-      if (width <= 500 && showTextOfLinkButton.value) {
-        showTextOfLinkButton.value = false;
-      } else if (width > 500 && !showTextOfLinkButton.value) {
-        showTextOfLinkButton.value = true;
-      }
+    var width = web.window.innerWidth;
+    if (width <= 500 && showTextOfLinkButton.value) {
+      showTextOfLinkButton.value = false;
+    } else if (width > 500 && !showTextOfLinkButton.value) {
+      showTextOfLinkButton.value = true;
     }
   }
 
@@ -38,7 +37,7 @@ class _NavigationPageState extends State<NavigationPage> {
     super.initState();
     app.navPageController = _pageController;
 
-    window.onResize.listen((event) => checkWindowWidth());
+    web.window.onresize = checkWindowWidth.toJS;
 
     checkWindowWidth();
   }
@@ -119,7 +118,7 @@ class _NavigationPageState extends State<NavigationPage> {
                   ),
                   drawer: AppDrawer(),
                   drawerEnableOpenDragGesture: true,
-                  drawerEdgeDragWidth: (window.innerWidth ?? 300) / 2 + 50,
+                  drawerEdgeDragWidth: web.window.innerWidth / 2 + 50,
                   body: PageView(
                     children: const [
                       const ClipRect(child: const HomePage()),

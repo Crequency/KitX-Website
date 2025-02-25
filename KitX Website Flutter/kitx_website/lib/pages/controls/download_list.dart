@@ -1,6 +1,4 @@
-﻿import 'dart:html';
-
-import 'package:community_material_icon/community_material_icon.dart';
+﻿import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kitx_website/common/build/app_build_timestamp.g.dart';
@@ -14,6 +12,7 @@ import 'package:kitx_website/pages/controls/download_pages/platform_windows.dart
 import 'package:kitx_website/utils/global.dart';
 import 'package:kitx_website/utils/open_link.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:web/web.dart' as web;
 
 var downloadSource = 'GitHub'.obs;
 
@@ -21,9 +20,7 @@ void downloadFile(String url) {
   Future.delayed(
     Duration.zero,
     () {
-      AnchorElement(href: url)
-        ..download = url
-        ..click();
+      web.window.open(url, 'Download');
     },
   );
 }
@@ -179,7 +176,7 @@ Widget getDownloadList(BuildContext context) {
         children: [
           InkWell(
             borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
-            splashColor: context.iconColor?.withOpacity(0.3),
+            splashColor: context.iconColor?.withValues(alpha: 0.3),
             onTap: () {},
             child: const Image(
               width: heroIconSize,
