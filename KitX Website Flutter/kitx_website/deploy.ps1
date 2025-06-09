@@ -1,4 +1,11 @@
-﻿. $PSScriptRoot/build.ps1
+﻿param (
+    [Parameter()]
+    [switch]$BypassBuild = $false
+)
+
+if (-not $BypassBuild) {
+    . $PSScriptRoot/build.ps1
+}
 git add dist.tar
 git stash
 git checkout deploy
