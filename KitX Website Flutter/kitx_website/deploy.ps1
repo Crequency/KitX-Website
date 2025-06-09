@@ -1,4 +1,4 @@
-﻿& build.ps1
+﻿. $PSScriptRoot/build.ps1
 git add dist.tar
 git stash
 git checkout deploy
