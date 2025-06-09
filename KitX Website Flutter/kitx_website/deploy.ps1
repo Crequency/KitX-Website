@@ -22,6 +22,9 @@ if (-not $BypassBuild) {
     git commit -m "Deploy new files"
     git push
     git checkout $lastBranch
+    if (Test-Path dist) {
+        Remove-Item dist -Recurse -Force
+    }
 
     Write-Output ""
     Write-Output "Press any key to update server ..."
