@@ -3,21 +3,25 @@
     [switch]$BypassBuild = $false
 )
 
+function Save-GitBranch {
+    $currentBranch = git rev-parse --abbrev-ref HEAD
+    return $currentBranch
+}
+
 if (-not $BypassBuild) {
-    . $PSScriptRoot/build.ps1
-    git add dist.tar
-    git stash
-    git checkout deploy
-
-    Remove-Item dist.tar
-
+    Write-Output ">>> Current changes stashed"
     git add .
-    git commit -m "Clean old files"
-    git stash pop
+    git stash
+    $lastBranch = Save-GitBranch
+    Write-Output ">>> Building ..."
+    . $PSScriptRoot/build.ps1
+    Write-Output ">>> Committing ..."
+    git checkout deploy
+    Move-Item ../../dist ./
     git add .
     git commit -m "Deploy new files"
     git push
-    git checkout dev=main
+    git checkout $lastBranch
 
     Write-Output ""
     Write-Output "Press any key to update server ..."

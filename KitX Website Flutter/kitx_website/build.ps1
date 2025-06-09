@@ -22,13 +22,3 @@ mkdir dist
 Copy-Item -r ./build/web/* dist/
 
 Move-Item dist ../../
-
-Set-Location ../../
-
-if (Test-Path dist.tar) {
-    Remove-Item dist.tar -Force
-}
-
-tar -cf dist.tar dist
-
-Remove-Item -r dist
