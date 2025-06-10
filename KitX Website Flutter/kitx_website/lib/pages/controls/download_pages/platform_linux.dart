@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/pages/controls/download_list.dart';
+import 'package:kitx_website/pages/controls/download_pages/download_controls/download_version_chip.dart';
 
 Widget getLinuxPage(
   BuildContext context,
@@ -32,6 +33,20 @@ Widget getLinuxPage(
       ),
     ),
     children: [
+      tilesPadder,
+      DownloadVersionChip(label: 'Download_Installer'.tr),
+      tilesPadder,
+      listTileItem(
+        enabled: true,
+        title: 'To be continued ...',
+        subTitle: (null, null),
+        shape: tileRadius,
+        leading: null,
+        trailing: const Icon(Icons.schedule),
+        onTap: () {},
+      ),
+      tilesPadder,
+      DownloadVersionChip(label: 'Download_Portable'.tr),
       tilesPadder,
       standardDownloadItem(
         title: 'Download_ApplyTo'.trParams({

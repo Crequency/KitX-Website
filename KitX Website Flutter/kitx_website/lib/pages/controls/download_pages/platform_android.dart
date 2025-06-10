@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/pages/controls/download_list.dart';
+import 'package:kitx_website/pages/controls/download_pages/download_controls/download_version_chip.dart';
 import 'package:kitx_website/pages/controls/targeted_icon_buttons/fdroid_icon_button.dart';
 import 'package:kitx_website/utils/open_link.dart';
 
@@ -35,6 +36,8 @@ Widget getAndroidPage(
     ),
     children: [
       tilesPadder,
+      DownloadVersionChip(label: 'Download_AppStore'.tr),
+      tilesPadder,
       standardDownloadItem(
         title: 'Get-on-F-Droid'.tr,
         subTitle: (
@@ -61,6 +64,8 @@ Widget getAndroidPage(
         trailing: const Icon(CommunityMaterialIcons.open_in_new),
         onTap: () => openLink('F-Droid-KitX-Mobile'),
       ),
+      tilesPadder,
+      DownloadVersionChip(label: 'Download_Portable'.tr),
       tilesPadder,
       standardDownloadItem(
         title: 'Download_ApplyTo'.trParams({
