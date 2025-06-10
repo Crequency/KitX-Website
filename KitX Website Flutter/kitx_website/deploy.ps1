@@ -17,7 +17,7 @@ if (-not $BypassBuild) {
     . $PSScriptRoot/build.ps1
     Write-Output ">>> Committing ..."
     git checkout deploy
-    Move-Item ../../dist ./
+    Move-Item ../../../dist ./
     git add .
     git commit -m "Deploy new files"
     git push

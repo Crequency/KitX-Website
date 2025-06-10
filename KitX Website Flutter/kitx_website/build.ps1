@@ -21,4 +21,4 @@ mkdir dist
 
 Copy-Item -r ./build/web/* dist/
 
-Move-Item dist ../../
+Move-Item dist ../../../
