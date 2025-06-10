@@ -20,7 +20,7 @@ if (-not $BypassBuild) {
     Move-Item ../../../dist ./
     git add ./dist -f
     git commit -m "Deploy new files"
-    git push
+    git push server --all
     git checkout $lastBranch
     if (Test-Path dist) {
         Remove-Item dist -Recurse -Force
