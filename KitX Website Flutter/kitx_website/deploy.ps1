@@ -18,7 +18,7 @@ if (-not $BypassBuild) {
     Write-Output ">>> Committing ..."
     git checkout deploy
     Move-Item ../../../dist ./
-    git add .
+    git add ./dist -f
     git commit -m "Deploy new files"
     git push
     git checkout $lastBranch
