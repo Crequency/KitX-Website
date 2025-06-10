@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:kitx_website/pages/controls/controls_helper.dart';
 import 'package:kitx_website/pages/controls/download_items_block.dart';
 import 'package:kitx_website/pages/controls/download_list.dart';
+import 'package:kitx_website/pages/controls/targeted_icon_buttons/fdroid_icon_button.dart';
 import 'package:kitx_website/utils/open_link.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 Widget getAndroidPage(
   BuildContext context,
@@ -48,17 +48,8 @@ Widget getAndroidPage(
                 spacing: 10,
                 runSpacing: 10,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(2),
-                    child: WebsafeSvg.asset(
-                      'assets/ThirdParty/fdroid-logo.svg',
-                      height: 30.0,
-                      placeholderBuilder: (context) => const SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: const CircularProgressIndicator(),
-                      ),
-                    ),
+                  FdroidIconButton(
+                    size: 30,
                   ),
                   recommendedChip,
                 ],

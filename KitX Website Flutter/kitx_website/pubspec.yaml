@@ -3,7 +3,7 @@ description: Website for KitX Project
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.2.0
+version: 1.2.2
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -17,12 +17,11 @@ dependencies:
   package_info_plus: ^8.3.0
   timelines_plus: ^1.0.6
   web: ^1.1.0
-  websafe_svg: ^3.0.1+2
 
 dev_dependencies:
   build: ^2.4.1
   build_runner: ^2.4.12
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
   flutter_web_optimizer: ^1.4.1
