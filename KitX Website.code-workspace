@@ -11,6 +11,7 @@
     "git.autorefresh": true,
     "[dart]": {
       "editor.rulers": [140]
-    }
+    },
+    "powershell.cwd": "KitX Website"
   }
 }
